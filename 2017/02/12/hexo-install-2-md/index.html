@@ -3,19 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>“tags” | 识数</title>
+    <title>个人博客部署——部署Hexo到Github Pages | 识数</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="大数据 + 人工智能 = 业务增长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="“tags”">
-<meta property="og:url" content="http://yoursite.com/“tags”/index.html">
+        <meta name="keywords" content="博客,hexo,github pages" />
+    
+    <meta name="description" content="一、部署 github pagesgithub pages 是github出品的一个免费的静态网页托管服务. 可以用来托管个人博客、组织或部门网站、项目介绍网站等。用github pages托管个人博客不像wordpress，需要配置服务器或VPS。github pages不需要配置服务器，不需要数据库，你只需要把你通过hexo生成的静态博客的html文件，通过git命令push到github即可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人博客部署——部署Hexo到Github Pages">
+<meta property="og:url" content="http://yoursite.com/2017/02/12/hexo-install-2-md/index.html">
 <meta property="og:site_name" content="识数">
-<meta property="og:description" content="大数据 + 人工智能 = 业务增长">
-<meta property="og:updated_time" content="2017-02-10T08:35:14.000Z">
+<meta property="og:description" content="一、部署 github pagesgithub pages 是github出品的一个免费的静态网页托管服务. 可以用来托管个人博客、组织或部门网站、项目介绍网站等。用github pages托管个人博客不像wordpress，需要配置服务器或VPS。github pages不需要配置服务器，不需要数据库，你只需要把你通过hexo生成的静态博客的html文件，通过git命令push到github即可">
+<meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg">
+<meta property="og:updated_time" content="2017-02-12T14:45:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="“tags”">
-<meta name="twitter:description" content="大数据 + 人工智能 = 业务增长">
+<meta name="twitter:title" content="个人博客部署——部署Hexo到Github Pages">
+<meta name="twitter:description" content="一、部署 github pagesgithub pages 是github出品的一个免费的静态网页托管服务. 可以用来托管个人博客、组织或部门网站、项目介绍网站等。用github pages托管个人博客不像wordpress，需要配置服务器或VPS。github pages不需要配置服务器，不需要数据库，你只需要把你通过hexo生成的静态博客的html文件，通过git命令push到github即可">
+<meta name="twitter:image" content="http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg">
     
 
     
@@ -126,27 +130,70 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/“tags”/index.html">“tags”</em>
+    <a class="page-title-link" href="/categories/开发环境和工具/">开发环境和工具</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="page-undefined" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-hexo-install-2-md" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        “tags”
+        个人博客部署——部署Hexo到Github Pages
         </h1>
     
 
             </header>
         
         
+            <div class="article-subtitle">
+                <a href="/2017/02/12/hexo-install-2-md/" class="article-date">
+    <time datetime="2017-02-12T13:00:21.000Z" itemprop="datePublished">2017-02-12</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            
+            <h2 id="一、部署-github-pages"><a href="#一、部署-github-pages" class="headerlink" title="一、部署 github pages"></a>一、部署 github pages</h2><p>github pages 是github出品的一个免费的静态网页托管服务. 可以用来托管个人博客、组织或部门网站、项目介绍网站等。用github pages托管个人博客不像wordpress，需要配置服务器或VPS。github pages不需要配置服务器，不需要数据库，你只需要把你通过hexo生成的静态博客的html文件，通过git命令push到github即可。快速、方面、访问稳定。网站访问的流量、带宽都由github承担，非常适合用来做个人博客。下面少说废话，我们参照<a href="https://pages.github.com/" target="_blank" rel="external">github pages</a>官网文档，来快速配置一个免费的属于你自己的网站吧。</p>
+<h4 id="1、创建用来托管博客的github仓库——Create-a-repository"><a href="#1、创建用来托管博客的github仓库——Create-a-repository" class="headerlink" title="1、创建用来托管博客的github仓库——Create a repository"></a>1、创建用来托管博客的github仓库——Create a repository</h4><ul>
+<li>登录<a href="https://github.com/" target="_blank" rel="external">GitHub</a>并创建一个名为username.github.io的新仓库，其中username是GitHub上的用户名（或组织名称）。（需要特别注意，username必须是你的github账号的用户名，如果弄错，后面网站将不可访问）</li>
+</ul>
+<h4 id="2、克隆刚刚创建的仓库到你的电脑——Clone-the-repository"><a href="#2、克隆刚刚创建的仓库到你的电脑——Clone-the-repository" class="headerlink" title="2、克隆刚刚创建的仓库到你的电脑——Clone the repository"></a>2、克隆刚刚创建的仓库到你的电脑——Clone the repository</h4><ul>
+<li>在我们上篇博客<a href="/2017/02/10/hexo-install/">个人博客部署——hexo安装</a>中创建的hexo/blog目录中，创建一个新的目录 .deoply , 克隆我们刚刚创建的仓库</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd hexo/blog </div><div class="line">git clone https://github.com/username/username.github.io.git .deploy/username.github.io  # 这里username是上面提到的你的github账号用户名</div></pre></td></tr></table></figure>
+<h4 id="3、让我们开始创建github-pages的hello-world"><a href="#3、让我们开始创建github-pages的hello-world" class="headerlink" title="3、让我们开始创建github pages的hello world"></a>3、让我们开始创建github pages的hello world</h4><ul>
+<li>进入上面克隆的目录 username.github.io中，创建一个新的文件 index.html。写入 hello world </li>
+<li>使用git add, commit, push 将刚刚创建的 index.html文件同步到你创建的github仓库中。</li>
+<li>在浏览器地址栏中贴入 <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> 即可访问你全新的个人博客网站了。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd username.github.io</div><div class="line">echo &quot;Hello World&quot; &gt; index.html</div><div class="line">git add --all</div><div class="line">git commit -m &quot;Initial commit&quot;</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+<h2 id="二、部署Hexo到Github-Pages"><a href="#二、部署Hexo到Github-Pages" class="headerlink" title="二、部署Hexo到Github Pages"></a>二、部署Hexo到Github Pages</h2><p>参考其他帖子和hexo文档的说法，将hexo部署到github，只需要在配置文件_config.xml中作如下修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:username/username.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<p>然后在命令行执行下面命令即可完成远程部署。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo -d</div></pre></td></tr></table></figure>
+<p>但经过实际操作，在我的环境中 hexo d 命令并不能工作的很好，有些时候，一些对hexo整体配置的修改需要通过 hexo d部署才能生效，但是创建的新帖子以及主题级别的配置修改，通过hexo d并没有按照预期工作。所以参考其他帖子我们创建一个部署脚本，通过git命令来同步更新到远程git仓库，了；来实现本地帖子到网站的更新。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">hexo generate</div><div class="line">cp -R public/* .deploy/username.github.io</div><div class="line">cd .deploy/username.github.io</div><div class="line">git add -A </div><div class="line">git commit -m “update”</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<p>将上述脚本命名为 deploy.sh 放在 hexo/blog文件夹下，以后需要部署更新的时候，直接执行 sh deploy.sh 即可。</p>
+<h2 id="三、新建一个帖子并部署到网站"><a href="#三、新建一个帖子并部署到网站" class="headerlink" title="三、新建一个帖子并部署到网站"></a>三、新建一个帖子并部署到网站</h2><p>经过上面的配置，我们基本大功告成。下面我们一起新建一个帖子并部署到我们的网站上来，看看效果。</p>
+<h4 id="1、新建帖子或文章"><a href="#1、新建帖子或文章" class="headerlink" title="1、新建帖子或文章"></a>1、新建帖子或文章</h4><p>使用hexo new 命令新建帖子，并在Front-matter(用于配置写入设置的文件开头的YAML或JSON块)中配置文章标题，创建时间，标签，目录，以及缩略图等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">hexo new test.md ## 使用hexo命令新建一个文件名为test.md的帖子文件。一般默认新建在 hexo/blog/source/_post/文件夹下。</div><div class="line"></div><div class="line"># front-matter配置</div><div class="line">---</div><div class="line">title: test post </div><div class="line">date: 2017-02-12 21:00:21</div><div class="line">tags: </div><div class="line">    - test</div><div class="line">    - hexo</div><div class="line">categories:</div><div class="line">    - test</div><div class="line">    - test_temp_file </div><div class="line">thumbnail: http://xxxx.jpg</div><div class="line">---</div></pre></td></tr></table></figure>
+<p>需要额外说明几点：</p>
+<ul>
+<li>使用hexo new 命令可以新建 帖子（post) 网页（pages) 草稿(draft) ，命令为 hexo new [layout] <title>  layout 取值 post，pages，draft 其中之一，也可以通过 修改 _config.yml中default_layout的取值来指定默认的布局。</title></li>
+<li>关于hexo 写作、配置等基本用法可以参考<a href="https://hexo.io/docs/" target="_blank" rel="external">hexo官方文档</a></li>
+<li>写帖子的过程中会用到不少图片，图片的引用可以使用第三方图床，如七牛云等。</li>
+<li>关于后续 hexo的使用、图床的使用、主题的切换配置、域名绑定、分享插件、统计插件、评论插件的安装配置等，我将放到三篇博客<strong>个人博客部署——优化你的网站</strong>中详细阐述 </li>
+</ul>
+<h4 id="2、部署更新到github-pages"><a href="#2、部署更新到github-pages" class="headerlink" title="2、部署更新到github pages"></a>2、部署更新到github pages</h4><p>上面我们新建了一个test帖子，在没有部署之前，上面的改动都是在你的电脑上的。想让你的改动展现在你的网站上，需要部署一下。很简单，直接运行我们前面配置的部署脚本即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sh deploy.sh</div></pre></td></tr></table></figure>
+<p>现在打开 username.github.io， ctrl + R强制刷新下，既可以看到你的新帖子出现在你的网站了。<br>如果发现新的帖子没有出现，或者是新的更新在网站上没有变动，这些现象大部分是由于现浏览器缓存问题。先别着急，打开浏览器设置，清空浏览器缓存后，再刷新下，就可以看到更新了。</p>
+
         </div>
         <footer class="article-footer">
             
@@ -277,6 +324,19 @@
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/02/10/hexo-install/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">个人博客部署——hexo安装</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -434,7 +494,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://yoursite.com/“tags”/index.html';
+    var disqus_url = 'http://yoursite.com/2017/02/12/hexo-install-2-md/';
     
     (function() {
     var dsq = document.createElement('script');
