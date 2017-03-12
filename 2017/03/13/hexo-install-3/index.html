@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>个人博客部署——域名绑定与插件安装 | 识数</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="博客,hexo" />
+    
+    <meta name="description" content="前面两篇个人博客部署系列博文已经完成了博客的整体搭建工作，下面是一些细节工作，有了这些，让你的博客如虎添翼。
+
+
+加载第三方评论框
+加载第三方分享按钮
+使用第三方网站统计
+添加帖子访问次数统计
+使用七牛云图床
+自定义关于页面
+自定义404页面
+添加打赏
+绑定域名
+网站地图
+RSS
+网站图标
+SEM优化
+
+加载第三方评论框hexo默认集成的是Disqus，国内的话可以使用多说。多说集成非常简单，仅">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人博客部署——域名绑定与插件安装">
+<meta property="og:url" content="http://wenlonggit.github.io/2017/03/13/hexo-install-3/index.html">
+<meta property="og:site_name" content="识数">
+<meta property="og:description" content="前面两篇个人博客部署系列博文已经完成了博客的整体搭建工作，下面是一些细节工作，有了这些，让你的博客如虎添翼。
+
+
+加载第三方评论框
+加载第三方分享按钮
+使用第三方网站统计
+添加帖子访问次数统计
+使用七牛云图床
+自定义关于页面
+自定义404页面
+添加打赏
+绑定域名
+网站地图
+RSS
+网站图标
+SEM优化
+
+加载第三方评论框hexo默认集成的是Disqus，国内的话可以使用多说。多说集成非常简单，仅">
+<meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg">
+<meta property="og:updated_time" content="2017-03-12T16:50:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="个人博客部署——域名绑定与插件安装">
+<meta name="twitter:description" content="前面两篇个人博客部署系列博文已经完成了博客的整体搭建工作，下面是一些细节工作，有了这些，让你的博客如虎添翼。
+
+
+加载第三方评论框
+加载第三方分享按钮
+使用第三方网站统计
+添加帖子访问次数统计
+使用七牛云图床
+自定义关于页面
+自定义404页面
+添加打赏
+绑定域名
+网站地图
+RSS
+网站图标
+SEM优化
+
+加载第三方评论框hexo默认集成的是Disqus，国内的话可以使用多说。多说集成非常简单，仅">
+<meta name="twitter:image" content="http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="识数" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/css/images/logo-header.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?71aaa84fc0fb9024c2fc9e77f9aa59c3";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">识数大数据</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/开发环境和工具/">开发环境和工具</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/开发环境和工具/">开发环境和工具</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-hexo-install-3" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        个人博客部署——域名绑定与插件安装
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2017/03/13/hexo-install-3/" class="article-date">
+    <time datetime="2017-03-13T13:00:21.000Z" itemprop="datePublished">2017-03-13</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>前面两篇个人博客部署系列博文已经完成了博客的整体搭建工作，下面是一些细节工作，有了这些，让你的博客如虎添翼。</p>
+</blockquote>
+<ul>
+<li>加载第三方评论框</li>
+<li>加载第三方分享按钮</li>
+<li>使用第三方网站统计</li>
+<li>添加帖子访问次数统计</li>
+<li>使用七牛云图床</li>
+<li>自定义关于页面</li>
+<li>自定义404页面</li>
+<li>添加打赏</li>
+<li>绑定域名</li>
+<li>网站地图</li>
+<li>RSS</li>
+<li>网站图标</li>
+<li>SEM优化</li>
+</ul>
+<h3 id="加载第三方评论框"><a href="#加载第三方评论框" class="headerlink" title="加载第三方评论框"></a>加载第三方评论框</h3><p>hexo默认集成的是<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>，国内的话可以使用<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>。<br>多说集成非常简单，仅需如下2步：<br>1、用社交账号登录多说，比如用微博账号。<br>2、填写你要集成多说评论框的网站网址，站名，生成唯一的多说调用网址，再填入一个用于找回的邮箱。<br>经过上述两步，会生成一段通用代码。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 多说评论框 start --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ds-thread"</span> <span class="attr">data-thread-key</span>=<span class="string">"请将此处替换成文章在你的站点中的ID"</span> <span class="attr">data-title</span>=<span class="string">"请替换成文章的标题"</span> <span class="attr">data-url</span>=<span class="string">"请替换成文章的网址"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说评论框 end --&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">var duoshuoQuery = &#123;short_name:"wenlong237"&#125;;</div><div class="line">    (function() &#123;</div><div class="line">        var ds = document.createElement('script');</div><div class="line">        ds.type = 'text/javascript';ds.async = true;</div><div class="line">        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';</div><div class="line">        ds.charset = 'UTF-8';</div><div class="line">        (document.getElementsByTagName('head')[0] </div><div class="line">         || document.getElementsByTagName('body')[0]).appendChild(ds);</div><div class="line">    &#125;)();</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></div></pre></td></tr></table></figure>
+<p>3、由于使用的是 hueman主题，主题配置中duoshuo已经是可选的配置项了，只需在themes/_config.yml中，将comment选项中默认的disqus:后的默认内容hexo-theme-hueman注释掉，在duoshuo:中填入在第二步中生成的多说域名xx.duoshuo.com中的xx即可。</p>
+<h3 id="加载第三方分享插件"><a href="#加载第三方分享插件" class="headerlink" title="加载第三方分享插件"></a>加载第三方分享插件</h3><p>多说分享插件:</p>
+<p>在博客主题的share目录下，新建一个duoshuo.ejs, 我的路径是 themes/hueman/layout/common/share/ </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;div class="ds-share" </div><div class="line">data-thread-key="&lt;%= post.path %&gt;" </div><div class="line">data-title="&lt;%= post.title %&gt;" </div><div class="line">data-images="此处请替换为分享时显示的图片的链接地址" </div><div class="line">data-content="小伙伴们快来点开看看吧" </div><div class="line">data-url="&lt;%= page.permalink %&gt;"&gt;</div><div class="line">    &lt;div class="ds-share-inline"&gt;</div><div class="line">      &lt;ul  class="ds-share-icons-16"&gt;</div><div class="line">        &lt;li data-toggle="ds-share-icons-more"&gt;&lt;a class="ds-more" href="javascript:void(0);"&gt;分享到：&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;a class="ds-wechat" href="javascript:void(0);" data-service="wechat"&gt;微信&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;a class="ds-weibo" href="javascript:void(0);" data-service="weibo"&gt;微博&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt; &lt;a class="ds-qq" href="javascript:void(0);" data-service="qq"&gt;QQ&lt;/a&gt; &lt;/li&gt; </div><div class="line">        &lt;li&gt;&lt;a class="ds-qzone" href="javascript:void(0);" data-service="qzone"&gt;QQ空间&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt; &lt;a class="ds-baidu" href="javascript:void(0);" data-service="baidu"&gt;百度&lt;/a&gt; &lt;/li&gt; </div><div class="line">        &lt;li&gt; &lt;a class="ds-douban" href="javascript:void(0);" data-service="douban"&gt;豆瓣网&lt;/a&gt; &lt;/li&gt; </div><div class="line">        &lt;li&gt; &lt;a class="ds-facebook" href="javascript:void(0);" data-service="facebook"&gt;Facebook&lt;/a&gt; &lt;/li&gt; </div><div class="line">        &lt;li&gt; &lt;a class="ds-twitter" href="javascript:void(0);" data-service="twitter"&gt;Twitter&lt;/a&gt; &lt;/li&gt; </div><div class="line"></div><div class="line">      &lt;/ul&gt;</div><div class="line">      &lt;div class="ds-share-icons-more"&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div><div class="line"></div><div class="line">``` </div><div class="line"></div><div class="line">然后就可以在主题下的_config.yml中 share的配置选项中添加一项，duoshuo  share: duoshuo</div><div class="line"></div><div class="line"></div><div class="line">### 添加帖子访问次数统计</div><div class="line"></div><div class="line">使用不蒜子添加网站访问量统计：</div><div class="line"></div><div class="line">- 添加帖子的访问量统计</div><div class="line">目的是在每篇帖子下面显示帖子的访问量。</div><div class="line">找到article.ejs，比如我的主题是在 themes/hueman/layout/common/post/article.ejs</div><div class="line">在&lt;footer class="article-footer"&gt;之上，添加如下代码块：</div><div class="line"></div><div class="line">```js</div><div class="line">&lt;!-- 不蒜统计 --&gt;</div><div class="line">&lt;span style="display: inline;" id="busuanzi_container_page_pv"&gt;本文已被访问 &lt;span id="busuanzi_value_page_pv" font="微软雅黑" style="color:black"&gt;&lt;/span&gt; 次，感谢您的来访！&lt;/span&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>添加网站总访问量<br>目的是在网站主页显示网站的整体访问量。<br>找到footer.ejs，比如我的主题是在 themes/hueman/layout/common/post/footer.ejs<br>在<p>Powered by … </p>的下方，添加如下代码块；</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 不蒜统计 --&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"display: inline;"</span> <span class="attr">id</span>=<span class="string">"busuanzi_container_site_uv"</span>&gt;</span>本站总访客数 <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_uv"</span> <span class="attr">font</span>=<span class="string">"微软雅黑"</span> <span class="attr">style</span>=<span class="string">"color:white"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span> 位<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div><div class="line">&lt;span style=<span class="string">"display: inline;"</span> id=<span class="string">"busuanzi_container_site_pv"</span>&gt;本站总访问量 &lt;span id=<span class="string">"busuanzi_value_site_pv"</span> font=<span class="string">"微软雅黑"</span> style=<span class="string">"color:white"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> 次&lt;<span class="regexp">/span&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="版权说明"><a href="#版权说明" class="headerlink" title="版权说明"></a>版权说明</h3><ul>
+<li><p>在博客根目录下（和 blog/source 同级），新建一个名为 scripts 的文件夹。</p>
+</li>
+<li><p>在 scripts 文件夹内, 新建一个 AddTail.js 脚本文件，脚本具体内容详如下：</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Filename: AddTail.js</span></div><div class="line"><span class="comment">// Author: Alex Zhang</span></div><div class="line"><span class="comment">// Date: 2017/03/10</span></div><div class="line"><span class="comment">// Based on the script by KUANG Qi: http://kuangqi.me/tricks/append-a-copyright-info-after-every-post/</span></div><div class="line"></div><div class="line"><span class="comment">// Add a tail to every post from tail.md</span></div><div class="line"><span class="comment">// Great for adding copyright info</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line">hexo.extend.filter.register(<span class="string">'before_post_render'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span>(data.copyright == <span class="literal">false</span>) <span class="keyword">return</span> data;</div><div class="line"></div><div class="line"><span class="comment">// Add seperate line</span></div><div class="line">data.content += <span class="string">'\n___\n'</span>;</div><div class="line"></div><div class="line"><span class="comment">// Try to read tail.md</span></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line"><span class="keyword">var</span> file_content = fs.readFileSync(<span class="string">'tail.md'</span>);</div><div class="line"><span class="keyword">if</span>(file_content &amp;&amp; data.content.length &gt; <span class="number">50</span>)</div><div class="line">&#123;</div><div class="line">data.content += file_content;</div><div class="line">&#125;</div><div class="line">&#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line"><span class="keyword">if</span> (err.code !== <span class="string">'ENOENT'</span>) <span class="keyword">throw</span> err;</div><div class="line"></div><div class="line"><span class="comment">// No process for ENOENT error</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 添加具体文章链接, 不需要去掉即可</span></div><div class="line"><span class="keyword">var</span> permalink = <span class="string">'\n本文链接：'</span> + data.permalink;</div><div class="line">data.content += permalink;</div><div class="line"></div><div class="line"><span class="keyword">return</span> data;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>在博客根目录下，新建一个 tail.md 文件，里面写想要展示的版本说明内容。示例如下文所示。</li>
+</ul>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">![<span class="string"></span>](<span class="link">https://licensebuttons.net/l/by/2.5/cn/88x31.png</span>)本作品采用[<span class="string">知识共享署名 2.5 中国大陆许可协议</span>](<span class="link">http://creativecommons.org/licenses/by/2.5/cn/</span>)进行许可，欢迎转载，但转载请注明来自[<span class="string">识数大数据</span>](<span class="link">http://shidata.com</span>)，并保持转载后文章内容的完整。本人保留所有版权相关权利。</div></pre></td></tr></table></figure>
+<p>版权提示信息加载完毕，然后执行hexo clean ； hexo generate 并同步github即可。</p>
+<h3 id="添加打赏"><a href="#添加打赏" class="headerlink" title="添加打赏"></a>添加打赏</h3><p>据说有些主题是直接支持打赏功能的，由于我们用的hueman主题没有打赏功能，所以需要我们动下手脚咯。</p>
+<p>编辑主题内的 article.ejs 文件，比如我这里位于 themes/yilia/layout/_partial/article.ejs </p>
+<p>在 <div class="article-content">…</div> 的下面，&lt;%- partial(‘footer’) %&gt; 的上面插入如下HTML代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- hexo打赏 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (!<span class="attr">post.excerpt</span> || !<span class="attr">index</span>)&#123; %&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (<span class="attr">theme.donate</span>) &#123; %&gt;</span></div><div class="line">        <span class="comment">&lt;!-- css --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="xml"></span></div><div class="line">        .center &#123;</div><div class="line">        text-align: center;</div><div class="line">        &#125;</div><div class="line">        .hidden &#123;</div><div class="line">        display: none;</div><div class="line">        &#125;</div><div class="line">        .donate_bar a.btn_donate&#123;</div><div class="line">        display: inline-block;</div><div class="line">        width: 82px;</div><div class="line">        height: 82px;</div><div class="line">        background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;</div><div class="line">        _background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;</div><div class="line"></div><div class="line">        <span class="comment">&lt;!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif</span></div><div class="line">        因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，</div><div class="line">        为了在让打赏按钮显示效果正常 而 添加了以下几行 css，</div><div class="line">        嵌入其它博客时不一定要它们。 --&gt;</div><div class="line">        -webkit-transition: background 0s;</div><div class="line">        -moz-transition: background 0s;</div><div class="line">        -o-transition: background 0s;</div><div class="line">        -ms-transition: background 0s;</div><div class="line">        transition: background 0s;</div><div class="line">        <span class="comment">&lt;!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 --&gt;</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        .donate_bar a.btn_donate:hover&#123; background-position: 0px -82px;&#125;</div><div class="line">        .donate_bar .donate_txt &#123;</div><div class="line">        display: block;</div><div class="line">        color: #9d9d9d;</div><div class="line">        font: 14px/2 "Microsoft Yahei";</div><div class="line">        &#125;</div><div class="line">        .bold&#123; font-weight: bold; &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- /css --&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">&lt;!-- Donate Module --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"donate_module"</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">&lt;!-- btn_donate &amp; tips --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"donate_board"</span> <span class="attr">class</span>=<span class="string">"donate_bar center"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">        ------------------------------------------------------------------------------------------------------------------------------</div><div class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"btn_donate"</span> <span class="attr">class</span>=<span class="string">"btn_donate"</span> <span class="attr">target</span>=<span class="string">"_self"</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">title</span>=<span class="string">"Donate 打赏"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"donate_txt"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%=</span> <span class="attr">theme.donate.text</span> %&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- /btn_donate &amp; tips --&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">&lt;!-- donate guide --&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"donate_guide"</span> <span class="attr">class</span>=<span class="string">"donate_bar center hidden"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">        ------------------------------------------------------------------------------------------------------------------------------</div><div class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&lt;%= theme.donate.wechat %&gt;"</span> <span class="attr">title</span>=<span class="string">"用微信扫一扫哦~"</span> <span class="attr">class</span>=<span class="string">"fancybox"</span> <span class="attr">rel</span>=<span class="string">"article0"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"&lt;%= theme.donate.wechat %&gt;"</span> <span class="attr">title</span>=<span class="string">"微信打赏 Colin"</span> <span class="attr">height</span>=<span class="string">"190px"</span> <span class="attr">width</span>=<span class="string">"auto"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line">        &amp;nbsp;&amp;nbsp;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&lt;%= theme.donate.alipay %&gt;"</span> <span class="attr">title</span>=<span class="string">"用支付宝扫一扫即可~"</span> <span class="attr">class</span>=<span class="string">"fancybox"</span> <span class="attr">rel</span>=<span class="string">"article0"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"&lt;%= theme.donate.alipay %&gt;"</span> <span class="attr">title</span>=<span class="string">"支付宝打赏 Colin"</span> <span class="attr">height</span>=<span class="string">"190px"</span> <span class="attr">width</span>=<span class="string">"auto"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"donate_txt"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%=</span> <span class="attr">theme.donate.text</span> %&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- /donate guide --&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">&lt;!-- donate script --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">document</span>.getElementById(<span class="string">'btn_donate'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        $(<span class="string">'#donate_board'</span>).addClass(<span class="string">'hidden'</span>);</div><div class="line">        $(<span class="string">'#donate_guide'</span>).removeClass(<span class="string">'hidden'</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">donate_on_web</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        $(<span class="string">'#donate'</span>).submit();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> original_window_onload = <span class="built_in">window</span>.onload;</div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (original_window_onload) &#123;</div><div class="line">        original_window_onload();</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">document</span>.getElementById(<span class="string">'donate_board_wdg'</span>).className = <span class="string">'hidden'</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- /donate script --&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- /Donate Module --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">%</span> &#125;%&gt;</span></div></pre></td></tr></table></figure>
+<p>最后，在主题的_config.xml中添加一下配置，以便打赏功能生效</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#打赏</div><div class="line">donate:</div><div class="line">  enable: true</div><div class="line">  text: Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！</div><div class="line">  wechat: http://ol5qowkge.bkt.clouddn.com/pay/wechat.jpg</div><div class="line">  alipay: http://ol5qowkge.bkt.clouddn.com/pay/paypal.jpg</div></pre></td></tr></table></figure>
+<h3 id="关于页面"><a href="#关于页面" class="headerlink" title="关于页面"></a>关于页面</h3><p>直接用markdown格式在博客根目录下的source/about文件夹下，新建一个index.md文件，尽情编辑即可。</p>
+<h3 id="404页面"><a href="#404页面" class="headerlink" title="404页面"></a>404页面</h3><p>推荐使用腾讯公益404页面，为公益贡献微薄之力。<br>只需在博客根目录的source/文件夹下新建一个404.html文件。填充以下内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"content-type"</span> <span class="attr">content</span>=<span class="string">"text/html;charset=utf-8;"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge,chrome=1"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"robots"</span> <span class="attr">content</span>=<span class="string">"all"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"robots"</span> <span class="attr">content</span>=<span class="string">"index,follow"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://www.qq.com/404/search_children.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> <span class="attr">homePageUrl</span>=<span class="string">"your site url "</span> <span class="attr">homePageName</span>=<span class="string">"回到我的主页"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>但要注意，404页面仅对绑定顶级域名的项目才起作用，GitHub默认分配的二级域名是不起作用的。<br>如果没有绑定域名的话是无法创建404 页面，只会跳转到github默认404 page </p>
+<h3 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h3><p>绑定域名先要了解两个概念：</p>
+<blockquote>
+<p><strong>A记录</strong><br>A记录是用来指定主机名（或域名）对应的IP地址记录。用户可以将该域名下的网站服务器指向到自己的web server上。同时也可以设置您域名的二级域名。<br><strong>CNAME记录</strong><br>CNAME记录，即：别名记录。这种记录允许您将多个名字映射到同一台计算机。 通常用于同时提供WWW和MAIL服务的计算机。例如，有一台计算机名为“host.mydomain.com”（A记录）。 它同时提供WWW和MAIL服务，为了便于用户访问服务。可以为该计算机设置两个别名（CNAME）：WWW和MAIL。<br>简单来说：<br>A记录：<br>将域名指向一个IPv4地址（例如：10.10.10.10），需要增加A记录<br>CNAME记录：<br>如果将域名指向一个域名，实现与被指向域名相同的访问效果，需要增加CNAME记录</p>
+</blockquote>
+<p>我们只需在购买域名的服务商提供的域名管理界面里，设置域名的CNAME映射到github.io的域名即可。由于我想把博客绑定到购买的域名的二级域名blog下，所以这里设置CNAME时，需要将主机记录填为blog，如果你要绑定根域名的化，填www就好。</p>
+<p>然后在github端添加刚刚绑定的域名：<br>在博客根目录的source/文件夹下新建一个名为CNAME的文件，文件填充你要刚刚绑定的域名即可。</p>
+<h3 id="使用百度统计"><a href="#使用百度统计" class="headerlink" title="使用百度统计"></a>使用百度统计</h3><p>先注册百度统计账号。</p>
+<p>由于hueman主题默认配置了百度统计为可选项，在主题的_config.yml文件的plugin设置中，将baidu_analytics的key填充接口。baidu_analytics的key可以在注册百度统计后，百度统计给出的js代码块中找到，如下部分<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hm.src = <span class="string">"https://hm.baidu.com/hm.js?xxxxxxxxxxxxxxxx"</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="http://ibruce.info/2015/04/04/busuanzi/" target="_blank" rel="external">不蒜统计</a></li>
+<li><a href="http://duoshuo.com/" target="_blank" rel="external">多说</a></li>
+<li><a href="https://icehe.me/web/donate/" target="_blank" rel="external">打赏</a></li>
+</ol>
+<hr>
+<p><img src="https://licensebuttons.net/l/by/2.5/cn/88x31.png" alt="">本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://shidata.com" target="_blank" rel="external">识数大数据</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://wenlonggit.github.io/2017/03/13/hexo-install-3/">http://wenlonggit.github.io/2017/03/13/hexo-install-3/</a></p>
+
+        </div>
+        
+        <!-- 不蒜统计 -->
+        <span style="display: inline;" id="busuanzi_container_page_pv">本文已被访问 <span id="busuanzi_value_page_pv" font="微软雅黑" style="color:black"></span> 次，感谢您的来访！</span>
+        
+           <!-- hexo打赏 -->
+    
+    
+        <!-- css -->
+        <style type="text/css">
+        .center {
+        text-align: center;
+        }
+        .hidden {
+        display: none;
+        }
+        .donate_bar a.btn_donate{
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+        _background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+        <!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+        因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+        为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+        嵌入其它博客时不一定要它们。 -->
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+        <!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+        }
+
+        .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+        .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+        }
+        .bold{ font-weight: bold; }
+        </style>
+        <!-- /css -->
+
+        <!-- Donate Module -->
+        <div id="donate_module">
+
+        <!-- btn_donate & tips -->
+        <div id="donate_board" class="donate_bar center">
+        <br>
+        ------------------------------------------------------------------------------------------------------------------------------
+        <br>
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">
+        Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+        </span>
+
+        </div>
+        <!-- /btn_donate & tips -->
+
+        <!-- donate guide -->
+
+        <div id="donate_guide" class="donate_bar center hidden">
+        <br>
+        ------------------------------------------------------------------------------------------------------------------------------
+        <br>
+
+        <a href="http://ol5qowkge.bkt.clouddn.com/pay/wechat.jpg" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+        <img src="http://ol5qowkge.bkt.clouddn.com/pay/wechat.jpg" title="微信打赏 Colin" height="190px" width="auto"/>
+        </a>
+
+        &nbsp;&nbsp;
+
+        <a href="http://ol5qowkge.bkt.clouddn.com/pay/paypal.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+        <img src="http://ol5qowkge.bkt.clouddn.com/pay/paypal.jpg" title="支付宝打赏 Colin" height="190px" width="auto"/>
+        </a>
+
+        <span class="donate_txt">
+        Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+        </span>
+
+        </div>
+        <!-- /donate guide -->
+
+        <!-- donate script -->
+        <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+        $('#donate_board').addClass('hidden');
+        $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web(){
+        $('#donate').submit();
+        }
+
+        var original_window_onload = window.onload;
+        window.onload = function () {
+        if (original_window_onload) {
+        original_window_onload();
+        }
+        document.getElementById('donate_board_wdg').className = 'hidden';
+        }
+        </script>
+        <!-- /donate script -->
+        </div>
+        <!-- /Donate Module -->
+    
+
+
+        <footer class="article-footer">
+            
+
+
+
+
+    <div class="ds-share" 
+data-thread-key="2017/03/13/hexo-install-3/" 
+data-title="个人博客部署——域名绑定与插件安装" 
+data-images="此处请替换为分享时显示的图片的链接地址" 
+data-content="小伙伴们快来点开看看吧" 
+data-url="http://wenlonggit.github.io/2017/03/13/hexo-install-3/">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li> <a class="ds-qq" href="javascript:void(0);" data-service="qq">QQ</a> </li> 
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li> <a class="ds-baidu" href="javascript:void(0);" data-service="baidu">百度</a> </li> 
+        <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban">豆瓣网</a> </li> 
+        <li> <a class="ds-facebook" href="javascript:void(0);" data-service="facebook">Facebook</a> </li> 
+      	<li> <a class="ds-twitter" href="javascript:void(0);" data-service="twitter">Twitter</a> </li> 
+
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2017/03/13/hexo-install-3/" data-title="个人博客部署——域名绑定与插件安装" data-url="http://wenlonggit.github.io/2017/03/13/hexo-install-3/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+
+
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/weimingzhishang" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/profile.php?id=100011404535284&ref=bookmarks" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="https://plus.google.com/u/0/105215634832027123898" target="_blank">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/wenlongGit" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/1891460800/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/02/12/hexo-install-2/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">个人博客部署——部署Hexo到Github Pages</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/03/13/hexo-install-3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg)" alt="个人博客部署——域名绑定与插件安装" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a></p>
+                            <p class="item-title"><a href="/2017/03/13/hexo-install-3/" class="title">个人博客部署——域名绑定与插件安装</a></p>
+                            <p class="item-date"><time datetime="2017-03-13T13:00:21.000Z" itemprop="datePublished">2017-03-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/02/12/hexo-install-2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg)" alt="个人博客部署——部署Hexo到Github Pages" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a></p>
+                            <p class="item-title"><a href="/2017/02/12/hexo-install-2/" class="title">个人博客部署——部署Hexo到Github Pages</a></p>
+                            <p class="item-date"><time datetime="2017-02-12T13:00:21.000Z" itemprop="datePublished">2017-02-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/02/10/hexo-install/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/hexo_github.png)" alt="个人博客部署——hexo安装" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a></p>
+                            <p class="item-title"><a href="/2017/02/10/hexo-install/" class="title">个人博客部署——hexo安装</a></p>
+                            <p class="item-date"><time datetime="2017-02-10T11:08:03.000Z" itemprop="datePublished">2017-02-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/02/06/hello-world/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/hello_world.png)" alt="Hello World" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/02/06/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2017-02-06T07:26:17.000Z" itemprop="datePublished">2017-02-06</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/开发环境和工具/">开发环境和工具</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a><span class="tag-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://shidata.com">识数</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Alex Zhang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                <!-- 不蒜统计 -->
+                <span style="display: inline;" id="busuanzi_container_site_uv">本站总访客数 <span id="busuanzi_value_site_uv" font="微软雅黑" style="color:white"></span> 位</span>
+                <span style="display: inline;" id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv" font="微软雅黑" style="color:white"></span> 次</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'wenlong237'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
