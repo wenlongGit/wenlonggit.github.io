@@ -3,18 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>标签：: 博客 | 识数</title>
+    <title>机器学习——TopicModel介绍 | 识数</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="大数据 + 人工智能 = 业务增长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="识数">
-<meta property="og:url" content="http://wenlonggit.github.io/tags/博客/index.html">
+        <meta name="keywords" content="机器学习,TopicModel,LDA,文本挖掘" />
+    
+    <meta name="description" content="一、什么是Topic Module在机器学习以及自然语言处理中, topic model是一种能够在一系列文档集中发现抽象的”主题”的统计学模型。主题模型通常被用作在文本中发现隐含的语义结构的文本挖掘(text-mining)工具。
+举个直接的例子,对于一个有特定主题的文档,我们通常可以在文档中找到或多或少频繁出现的特定域的单词,比如”狗”和”骨头”通常出现在和狗相关的文档中,而”猫”和”喵喵”通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习——TopicModel介绍">
+<meta property="og:url" content="http://wenlonggit.github.io/2017/05/02/ml-topicmodule/index.html">
 <meta property="og:site_name" content="识数">
-<meta property="og:description" content="大数据 + 人工智能 = 业务增长">
+<meta property="og:description" content="一、什么是Topic Module在机器学习以及自然语言处理中, topic model是一种能够在一系列文档集中发现抽象的”主题”的统计学模型。主题模型通常被用作在文本中发现隐含的语义结构的文本挖掘(text-mining)工具。
+举个直接的例子,对于一个有特定主题的文档,我们通常可以在文档中找到或多或少频繁出现的特定域的单词,比如”狗”和”骨头”通常出现在和狗相关的文档中,而”猫”和”喵喵”通">
+<meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/hexo_github.png">
+<meta property="og:updated_time" content="2017-05-03T03:02:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="识数">
-<meta name="twitter:description" content="大数据 + 人工智能 = 业务增长">
+<meta name="twitter:title" content="机器学习——TopicModel介绍">
+<meta name="twitter:description" content="一、什么是Topic Module在机器学习以及自然语言处理中, topic model是一种能够在一系列文档集中发现抽象的”主题”的统计学模型。主题模型通常被用作在文本中发现隐含的语义结构的文本挖掘(text-mining)工具。
+举个直接的例子,对于一个有特定主题的文档,我们通常可以在文档中找到或多或少频繁出现的特定域的单词,比如”狗”和”骨头”通常出现在和狗相关的文档中,而”猫”和”喵喵”通">
+<meta name="twitter:image" content="http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/hexo_github.png">
     
 
     
@@ -137,196 +145,226 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签：: <em>博客</em>
+    <a class="page-title-link" href="/categories/机器学习/">机器学习</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            
+                            <article id="post-ml-topicmodule" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        机器学习——TopicModel介绍
+        </h1>
+    
 
-    
-    
+            </header>
         
         
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
+            <div class="article-subtitle">
+                <a href="/2017/05/02/ml-topicmodule/" class="article-date">
+    <time datetime="2017-05-02T11:08:03.000Z" itemprop="datePublished">2017-05-02</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LDA/">LDA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TopicModel/">TopicModel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文本挖掘/">文本挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
             </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/2017/03/13/hexo-install-3/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg)" alt="个人博客部署——域名绑定与插件安装" class="thumbnail-image"></span>
-    
-    
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="一、什么是Topic-Module"><a href="#一、什么是Topic-Module" class="headerlink" title="一、什么是Topic Module"></a>一、什么是Topic Module</h2><p>在机器学习以及自然语言处理中, topic model是一种能够在一系列文档集中发现抽象的”主题”的统计学模型。主题模型通常被用作在文本中发现隐含的语义结构的文本挖掘(text-mining)工具。</p>
+<p>举个直接的例子,对于一个有特定主题的文档,我们通常可以在文档中找到或多或少频繁出现的特定域的单词,比如”狗”和”骨头”通常出现在和狗相关的文档中,而”猫”和”喵喵”通常出现在和猫相关的文档中。而”这”,”是”这类词通常在所有的文档中都会频繁的出现。</p>
+<p>一个文档也可能含有多个主题，且以一定的比例呈现。比如，一篇10%的比例是在写“猫”，90%是在写“狗”的文章，其中出现与狗相关的单词的数量应该是猫的9倍。由Topic Mdoel构建的“主题”通常是一系列相似的词。主题模型通过数学框架捕捉到文档的“直觉”语义，根据单词的统计信息决定文档的主题是什么。</p>
+<p>主题模型也被称作概率主题模型。它是用于发现泛文本文体的潜在语义结构的统计算法。在信息时代，我们每天遇到的书面材料数量已经超出了我们的处理能力。而主题模型可以帮助我们去组织和洞察理解这些大量的非机构化文本材料。</p>
+<p>最初，主题模型被作为文本挖掘工具来检测遗传信息、图片、网络等数据中的有益的结构化信息。</p>
+<p>未完待续。。。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>1 <a href="https://en.wikipedia.org/wiki/Topic_model" target="_blank" rel="external">Topic Model WikiPedia</a></p>
+<hr>
+<p><img src="https://licensebuttons.net/l/by/2.5/cn/88x31.png" alt="">本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://shidata.com" target="_blank" rel="external">识数大数据</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://wenlonggit.github.io/2017/05/02/ml-topicmodule/">http://wenlonggit.github.io/2017/05/02/ml-topicmodule/</a></p>
 
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a>
-            </p>
-            <p class="date"><time datetime="2017-03-13T13:00:21.000Z" itemprop="datePublished">2017-03-13</time></p>
         </div>
         
+        <!-- 不蒜统计 -->
+        <span style="display: inline;" id="busuanzi_container_page_pv">本文已被访问 <span id="busuanzi_value_page_pv" font="微软雅黑" style="color:black"></span> 次，感谢您的来访！</span>
+        
+           <!-- hexo打赏 -->
     
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/13/hexo-install-3/">个人博客部署——域名绑定与插件安装</a>
-        </h1>
+    
+        <!-- css -->
+        <style type="text/css">
+        .center {
+        text-align: center;
+        }
+        .hidden {
+        display: none;
+        }
+        .donate_bar a.btn_donate{
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+        _background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+        <!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+        因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+        为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+        嵌入其它博客时不一定要它们。 -->
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+        <!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+        }
+
+        .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+        .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+        }
+        .bold{ font-weight: bold; }
+        </style>
+        <!-- /css -->
+
+        <!-- Donate Module -->
+        <div id="donate_module">
+
+        <!-- btn_donate & tips -->
+        <div id="donate_board" class="donate_bar center">
+        <br>
+        ------------------------------------------------------------------------------------------------------------------------------
+        <br>
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">
+        Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+        </span>
+
+        </div>
+        <!-- /btn_donate & tips -->
+
+        <!-- donate guide -->
+
+        <div id="donate_guide" class="donate_bar center hidden">
+        <br>
+        ------------------------------------------------------------------------------------------------------------------------------
+        <br>
+
+        <a href="http://ol5qowkge.bkt.clouddn.com/pay/wechat.jpg" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+        <img src="http://ol5qowkge.bkt.clouddn.com/pay/wechat.jpg" title="微信打赏 Colin" height="190px" width="auto"/>
+        </a>
+
+        &nbsp;&nbsp;
+
+        <a href="http://ol5qowkge.bkt.clouddn.com/pay/paypal.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+        <img src="http://ol5qowkge.bkt.clouddn.com/pay/paypal.jpg" title="支付宝打赏 Colin" height="190px" width="auto"/>
+        </a>
+
+        <span class="donate_txt">
+        Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+        </span>
+
+        </div>
+        <!-- /donate guide -->
+
+        <!-- donate script -->
+        <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+        $('#donate_board').addClass('hidden');
+        $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web(){
+        $('#donate').submit();
+        }
+
+        var original_window_onload = window.onload;
+        window.onload = function () {
+        if (original_window_onload) {
+        original_window_onload();
+        }
+        document.getElementById('donate_board_wdg').className = 'hidden';
+        }
+        </script>
+        <!-- /donate script -->
+        </div>
+        <!-- /Donate Module -->
     
 
-        <p class="article-excerpt">
+
+        <footer class="article-footer">
             
-前面两篇个人博客部署系列博文已经完成了博客的整体搭建工作，下面是一些细节工作，有了这些，让你的博客如虎添翼。
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
 
 
-加载第三方评论框
-加载第三方分享按钮
-使用第三方网站统计
-添加帖子访问次数统计
-使用七牛云图床
-自定义关于页面
-自定义404页面
-添加打赏
-绑定域名
-网站地图
-RSS
-网站图标
-SEM优化
 
-加载第三方评论框hexo默认集成的是Disqus，国内的话可以使用多说。多说集成非常简单，仅
-        </p>
+
+
+        </footer>
     </div>
 </article>
-    
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/02/12/hexo-install-2/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg)" alt="个人博客部署——部署Hexo到Github Pages" class="thumbnail-image"></span>
-    
+    <section id="comments">
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
+    <div id="uyan_frame"></div>
 
     
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a>
-            </p>
-            <p class="date"><time datetime="2017-02-12T13:00:21.000Z" itemprop="datePublished">2017-02-12</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/02/12/hexo-install-2/">个人博客部署——部署Hexo到Github Pages</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            一、部署 github pagesgithub pages 是github出品的一个免费的静态网页托管服务. 可以用来托管个人博客、组织或部门网站、项目介绍网站等。用github pages托管个人博客不像wordpress，需要配置服务器或VPS。github pages不需要配置服务器，不需要数据库，你只需要把你通过hexo生成的静态博客的html文件，通过git命令push到github即可
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/02/10/hexo-install/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/hexo_github.png)" alt="个人博客部署——hexo安装" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a>
-            </p>
-            <p class="date"><time datetime="2017-02-10T11:08:03.000Z" itemprop="datePublished">2017-02-10</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/02/10/hexo-install/">个人博客部署——hexo安装</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            一、安装nodejs由于官网下载比较慢，建议直接使用homebrew安装：
-1brew install node
-安装非常快，安装完成后检查是否安装成功：
-1node -v
-二、安装hexo
-新建hexo目录
-
-1mkdir ./hexo
-
-安装hexo cli 
-
-1npm install hexo-cli -g
-
-初始化blog 
-
-1hexo init blog
-
-启动blog 
-
-1234
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
+    </section>
 
 
-    </div></section>
+
 
 
 
@@ -388,6 +426,29 @@ SEM优化
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/03/hadoop-snapshot/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            (no title)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/03/13/hexo-install-3/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">个人博客部署——域名绑定与插件安装</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

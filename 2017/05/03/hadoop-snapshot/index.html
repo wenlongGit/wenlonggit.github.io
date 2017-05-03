@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>识数</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="" />
+    
+    <meta name="description" content="title: 大数据工程——Hadoop/hive文件存储格式date: 2017-05-02 19:08:03tags: 
+- 大数据工程
+- Hadoop
+- hive  
+- 文件存储格式
+categories:
+- 大数据工程
+HADOOP/HIVE文件存储格式1、基于行存储
+基于Hadoop系统行存储结构的优点在于快速数据加载和动态负载的高适应能力，这是因为行存储保证了相同记录的所有域都">
+<meta property="og:type" content="article">
+<meta property="og:title" content="识数">
+<meta property="og:url" content="http://wenlonggit.github.io/2017/05/03/hadoop-snapshot/index.html">
+<meta property="og:site_name" content="识数">
+<meta property="og:description" content="title: 大数据工程——Hadoop/hive文件存储格式date: 2017-05-02 19:08:03tags: 
+- 大数据工程
+- Hadoop
+- hive  
+- 文件存储格式
+categories:
+- 大数据工程
+HADOOP/HIVE文件存储格式1、基于行存储
+基于Hadoop系统行存储结构的优点在于快速数据加载和动态负载的高适应能力，这是因为行存储保证了相同记录的所有域都">
+<meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/row.png">
+<meta property="og:updated_time" content="2017-05-03T03:14:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="识数">
+<meta name="twitter:description" content="title: 大数据工程——Hadoop/hive文件存储格式date: 2017-05-02 19:08:03tags: 
+- 大数据工程
+- Hadoop
+- hive  
+- 文件存储格式
+categories:
+- 大数据工程
+HADOOP/HIVE文件存储格式1、基于行存储
+基于Hadoop系统行存储结构的优点在于快速数据加载和动态负载的高适应能力，这是因为行存储保证了相同记录的所有域都">
+<meta name="twitter:image" content="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/row.png">
+    
+
+    
+        <link rel="alternate" href="/" title="识数" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/css/images/logo-header.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?71aaa84fc0fb9024c2fc9e77f9aa59c3";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">识数大数据</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/开发环境和工具/">开发环境和工具</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-hadoop-snapshot" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <div class="article-subtitle">
+                <a href="/2017/05/03/hadoop-snapshot/" class="article-date">
+    <time datetime="2017-05-03T03:14:08.000Z" itemprop="datePublished">2017-05-03</time>
+</a>
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>title: 大数据工程——Hadoop/hive文件存储格式<br>date: 2017-05-02 19:08:03<br>tags: </p>
+<pre><code>- 大数据工程
+- Hadoop
+- hive  
+- 文件存储格式
+</code></pre><p>categories:</p>
+<pre><code>- 大数据工程
+</code></pre><h1 id="HADOOP-HIVE文件存储格式"><a href="#HADOOP-HIVE文件存储格式" class="headerlink" title="HADOOP/HIVE文件存储格式"></a>HADOOP/HIVE文件存储格式</h1><h3 id="1、基于行存储"><a href="#1、基于行存储" class="headerlink" title="1、基于行存储"></a>1、基于行存储</h3><blockquote>
+<p>基于Hadoop系统行存储结构的优点在于快速数据加载和动态负载的高适应能力，这是因为行存储保证了相同记录的所有域都在同一个集群节点，即同一个 HDFS块。不过，行存储的缺点也是显而易见的，例如它不能支持快速查询处理，因为当查询仅仅针对多列表中的少数几列时，它不能跳过不必要的列读取；此 外，由于混合着不同数据值的列，行存储不易获得一个极高的压缩比，即空间利用率不易大幅提高。</p>
+</blockquote>
+<p>HDFS块内行存储的例子：<br><img src="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/row.png" alt=""></p>
+<h4 id="Textfile"><a href="#Textfile" class="headerlink" title="Textfile"></a>Textfile</h4><blockquote>
+<p>默认格式，数据不做压缩，磁盘开销大，数据解析开销大。<br>文本格式除了会占用更多磁盘资源外，对它的解析开销一般会比二进制格式高，因此强烈不建议在生产系统中使用这些格式进行储存。<br>如果需要输出这些格式，请在客户端做相应的转换操作。<br>文本格式经常会用于日志收集，数据库导入，Hive默认配置也是使用文本格式，而且常常容易忘了压缩，所以请确保使用了正确的格式。 </p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt; create table test1(str STRING)  </div><div class="line">&gt; STORED AS TEXTFILE;   </div><div class="line">OK  </div><div class="line">Time taken: 0.786 seconds  </div><div class="line">#写脚本生成一个随机字符串文件，导入文件：  </div><div class="line">&gt; LOAD DATA LOCAL INPATH '/home/work/data/test.txt' INTO TABLE test1;  </div><div class="line">Copying data from file:/home/work/data/test.txt  </div><div class="line">Copying file: file:/home/work/data/test.txt  </div><div class="line">Loading data to table default.test1  </div><div class="line">OK  </div><div class="line">Time taken: 0.243 seconds</div></pre></td></tr></table></figure>
+<h4 id="SequenceFile"><a href="#SequenceFile" class="headerlink" title="SequenceFile"></a>SequenceFile</h4><blockquote>
+<p>SequenceFile是Hadoop API 提供的一种二进制文件，它将数据以<key,value>的形式序列化到文件中。这种二进制文件内部使用Hadoop 的标准的Writable 接口实现序列化和反序列化。<br>Hive 中的SequenceFile 继承自Hadoop API 的SequenceFile，不过它的key为空，使用value 存放实际的值， 这样是为了避免MR 在运行map 阶段的排序过程。</key,value></p>
+</blockquote>
+<ol>
+<li>其具有使用方便、可分割、可压缩的特点。 </li>
+<li>支持三种压缩选择：NONE, RECORD, BLOCK。 Record压缩率低，一般建议使用BLOCK压缩。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> da.test_sequencefile(</div><div class="line">  ...</div><div class="line">)</div><div class="line"><span class="keyword">COMMENT</span> <span class="string">'test_sequencefile'</span></div><div class="line">PARTITIONED <span class="keyword">BY</span>(dt <span class="keyword">STRING</span>)</div><div class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span></div><div class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">'\001'</span></div><div class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> SEQUENCEFILE</div><div class="line">;</div></pre></td></tr></table></figure>
+<h3 id="2、基于列存储"><a href="#2、基于列存储" class="headerlink" title="2、基于列存储"></a>2、基于列存储</h3><blockquote>
+<p>查询时列存储能够避免读不必要的列， 并且压缩一个列中的相似数据能够达到较高的压缩比。然而，由于元组重构的较高开销，它并不能提供基于Hadoop系统的快速查询处理。列存储不能保证同一 记录的所有域都存储在同一集群节点，行存储的例子中，记录的4个域存储在位于不同节点的3个HDFS块中。因此，记录的重构将导致通过集群节点网络的大 量数据传输。尽管预先分组后，多个列在一起能够减少开销，但是对于高度动态的负载模式，它并不具备很好的适应性。</p>
+</blockquote>
+<p>HDFS块内列存储的例子：<br><img src="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/column.jpg" alt=""></p>
+<h3 id="3、基于行列存储"><a href="#3、基于行列存储" class="headerlink" title="3、基于行列存储"></a>3、基于行列存储</h3><h4 id="RCFile"><a href="#RCFile" class="headerlink" title="RCFile"></a>RCFile</h4><blockquote>
+<p>RCFile是Hive推出的一种专门面向列的数据格式。 它遵循“先按列划分，再垂直划分”的设计理念。当查询过程中，针对它并不关心的列时，它会在IO上跳过这些列。需要说明的是，RCFile在map阶段从远端拷贝仍然是拷贝整个数据块，并且拷贝到本地目录后RCFile并不是真正直接跳过不需要的列，并跳到需要读取的列， 而是通过扫描每一个row group的头部定义来实现的，但是在整个HDFS Block 级别的头部并没有定义每个列从哪个row group起始到哪个row group结束。所以在读取所有列的情况下，RCFile的性能反而没有SequenceFile高。</p>
+</blockquote>
+<ul>
+<li>RCFile结合行存储查询的快速和列存储节省空间的特点：<ol>
+<li>首先，RCFile保证同一行的数据位于同一节点，因此元组重构的开销很低；</li>
+<li>其次，像列存储一样，RCFile能够利用列维度的数据压缩，并且能跳过不必要的列读取。</li>
+</ol>
+</li>
+</ul>
+<p>HDFS块内RCFile方式存储的例子：<br><img src="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/rcfile.png" alt=""></p>
+<p>RCFILE是一种行列存储相结合的存储方式。首先，其将数据按行分块，保证同一个record在一个块上，避免读一个记录需要读取多个block。其次，块数据列式存储，有利于数据压缩和快速的列存取。RCFILE文件示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> da.test_rcfile(</div><div class="line">   ...</div><div class="line">)</div><div class="line"><span class="keyword">COMMENT</span> <span class="string">'test_rcfile'</span></div><div class="line">PARTITIONED <span class="keyword">BY</span>(dt <span class="keyword">STRING</span>)</div><div class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span></div><div class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">'\001'</span></div><div class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> RCFILE </div><div class="line">;</div></pre></td></tr></table></figure>
+<h3 id="6、ParquetFile"><a href="#6、ParquetFile" class="headerlink" title="6、ParquetFile"></a>6、ParquetFile</h3><blockquote>
+<p>源自于google Dremel系统（可下载论文参阅），Parquet相当于Google Dremel中的数据存储引擎，而Apache顶级开源项目Drill正是Dremel的开源实现。<br>Apache Parquet 最初的设计动机是存储嵌套式数据，比如Protocolbuffer，thrift，json等，将这类数据存储成列式格式，以方便对其高效压缩和编码，且使用更少的IO操作取出需要的数据，这也是Parquet相比于ORC的优势，它能够透明地将Protobuf和thrift类型的数据进行列式存储，在Protobuf和thrift被广泛使用的今天，与parquet进行集成，是一件非容易和自然的事情。 除了上述优势外，相比于ORC, Parquet没有太多其他可圈可点的地方，比如它不支持update操作（数据写成后不可修改），不支持ACID等。</p>
+</blockquote>
+<p>ParquetFile 的详细介绍参考 <a href="http://www.infoq.com/cn/articles/in-depth-analysis-of-parquet-column-storage-format" target="_blank" rel="external">深入分析Parquet列式存储格式</a></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> da.test_parquet(</div><div class="line"> ...</div><div class="line">)</div><div class="line"><span class="keyword">COMMENT</span> <span class="string">'test_parquet'</span></div><div class="line">PARTITIONED <span class="keyword">BY</span>(dt <span class="keyword">STRING</span>)</div><div class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span></div><div class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">'\001'</span></div><div class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> PARQUET </div><div class="line">;</div></pre></td></tr></table></figure>
+<p><img src="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/parquet.jpg" alt=""></p>
+<h3 id="7、ORCFile"><a href="#7、ORCFile" class="headerlink" title="7、ORCFile"></a>7、ORCFile</h3><blockquote>
+<p>ORC（OptimizedRC File）存储源自于RC（RecordColumnar File）这种存储格式，RC是一种列式存储引擎，对schema演化（修改schema需要重新生成数据）支持较差，而ORC是对RC改进，但它仍对schema演化支持较差，主要是在压缩编码，查询性能方面做了优化。<br>RC/ORC最初是在Hive中得到使用，最后发展势头不错，独立成一个单独的项目。Hive 1.x版本对事务和update操作的支持，便是基于ORC实现的（其他存储格式暂不支持）。ORC发展到今天，已经具备一些非常高级的feature，比如支持update操作，支持ACID，支持struct，array复杂类型。你可以使用复杂类型构建一个类似于parquet的嵌套式数据架构，但当层数非常多时，写起来非常麻烦和复杂，而parquet提供的schema表达方式更容易表示出多级嵌套的数据类型。</p>
+</blockquote>
+<p>ORCFile的详细介绍参考 <a href="http://www.slideshare.net/Hadoop_Summit/orc-2015-faster-better-smaller-49481231" target="_blank" rel="external">ORC 2015: Faster, Better, Smaller</a></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> da.test_orcfile(</div><div class="line"> ...</div><div class="line">)</div><div class="line"><span class="keyword">COMMENT</span> <span class="string">'test_orcfile'</span></div><div class="line">PARTITIONED <span class="keyword">BY</span>(dt <span class="keyword">STRING</span>)</div><div class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span></div><div class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">'\001'</span></div><div class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> ORCFILE </div><div class="line">;</div></pre></td></tr></table></figure>
+<p><img src="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/orcfile.jpg" alt=""></p>
+<p><strong>Parquet与ORC对比</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Parquet</th>
+<th>ORC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Apache顶级项目 开源 列式存储引擎</td>
+<td>Apache顶级项目 开源 列式存储引擎</td>
+</tr>
+<tr>
+<td>主导公司</td>
+<td>Twitter/Cloudera</td>
+<td>Hortonworks</td>
+</tr>
+<tr>
+<td>开发语言</td>
+<td>Java</td>
+<td>Java</td>
+</tr>
+<tr>
+<td>嵌套式结构</td>
+<td>支持多种编码，字典，RLE，delta编码等</td>
+<td>支持主流编码，与parquet类似</td>
+</tr>
+<tr>
+<td>ACID</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>Update操作（delete，update等）</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>支持索引（实际上是统计信息）</td>
+<td>粗粒度索引，block/group/chunk级别统计信息</td>
+<td>粗粒度索引，file/stripe/row级别统计信息，不能精确到列建索引</td>
+</tr>
+<tr>
+<td>查询性能</td>
+<td>ORC稍高</td>
+<td></td>
+</tr>
+<tr>
+<td>数据压缩能力</td>
+<td>ORC稍高</td>
+<td></td>
+</tr>
+<tr>
+<td>支持的查询引擎</td>
+<td>Drill Impala Hive ….</td>
+<td>Hive</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6、自定义格式"><a href="#6、自定义格式" class="headerlink" title="6、自定义格式"></a>6、自定义格式</h3><blockquote>
+<p>当用户的数据文件格式不能被当前 Hive 所识别的时候，可以自定义文件格式。<br>用户可以通过实现inputformat和 outputformat来自定义输入输出格式</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; create table test4(str STRING)  </div><div class="line">&gt; stored as  </div><div class="line">&gt; inputformat 'org.apache.hadoop.hive.contrib.fileformat.base64.Base64TextInputFormat'  </div><div class="line">&gt; outputformat 'org.apache.hadoop.hive.contrib.fileformat.base64.Base64TextOutputFormat';</div></pre></td></tr></table></figure>
+<h3 id="7、不同格式文件的性能测试"><a href="#7、不同格式文件的性能测试" class="headerlink" title="7、不同格式文件的性能测试"></a>7、不同格式文件的性能测试</h3><ul>
+<li>写入性能</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">--TextFile</span></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> test_textfile <span class="keyword">like</span> dw.user_action ;</div><div class="line"><span class="keyword">set</span> hive.exec.compress.output=<span class="literal">true</span>;</div><div class="line"><span class="keyword">set</span> mapred.output.compress=<span class="literal">true</span>;</div><div class="line"><span class="keyword">set</span> mapred.output.compression.codec=org.apache.hadoop.io.compress.GzipCodec;</div><div class="line"><span class="keyword">set</span> io.compression.codecs=org.apache.hadoop.io.compress.GzipCodec;</div><div class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">table</span> test_textfile <span class="keyword">PARTITION</span>(dt=<span class="string">'2016-09-20'</span>)</div><div class="line"><span class="keyword">SELECT</span> u_timestamp, u_backtime, u_responsetime, u_host, u_xff, u_status, u_size, u_div, u_dic, u_diu, u_diu2, u_diu3, u_uid, u_startid, u_stepid, u_time, u_mod, u_ac, u_client, u_ver, u_uuid, u_hash, u_xinge, u_token, u_agent, u_method, u_new_activity, u_old_activity, u_key, u_client_module, u_source, u_page, u_position, u_vid, u_type, u_percent, u_rate, u_user_role, u_isnew_user, u_isdownload, u_isonline, u_buffertime, u_action, u_ishigh, u_cdn_source, u_download_start, u_download_stop, u_fail_cdn_source, u_new_cdn_source, u_width, u_height, u_lon, u_lat, u_province, u_city, u_netop, u_nettype, u_sdkversion, u_model, u_device, u_manufacture, u_reverse0, u_reverse1, u_reverse2, u_reverse3, u_reverse4, u_reverse5, u_reverse6, u_reverse7, u_reverse8, u_reverse9, u_bigger_json</div><div class="line"> <span class="keyword">FROM</span> dw.user_action <span class="keyword">WHERE</span> dt=<span class="string">'2016-09-20'</span>;</div><div class="line"></div><div class="line"><span class="comment">--SquenceFile</span></div><div class="line"><span class="keyword">set</span> hive.exec.compress.output=<span class="literal">true</span>;</div><div class="line"><span class="keyword">set</span> mapred.output.compress=<span class="literal">true</span>;</div><div class="line"><span class="keyword">set</span> mapred.output.compression.codec=org.apache.hadoop.io.compress.GzipCodec;</div><div class="line"><span class="keyword">set</span> io.compression.codecs=org.apache.hadoop.io.compress.GzipCodec;</div><div class="line"><span class="keyword">set</span> io.seqfile.compression.type=<span class="keyword">BLOCK</span>;</div><div class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">table</span> test_sequencefile <span class="keyword">PARTITION</span>(dt=<span class="string">'2016-09-20'</span>)</div><div class="line"><span class="keyword">SELECT</span>  ...</div><div class="line"> <span class="keyword">FROM</span> dw.user_action <span class="keyword">WHERE</span> dt=<span class="string">'2016-09-20'</span>;</div><div class="line"></div><div class="line"><span class="comment">--RCFile</span></div><div class="line"><span class="keyword">set</span> hive.exec.compress.output=<span class="literal">true</span>;</div><div class="line"><span class="keyword">set</span> mapred.output.compress=<span class="literal">true</span>;</div><div class="line"><span class="keyword">set</span> mapred.output.compression.codec=org.apache.hadoop.io.compress.GzipCodec;</div><div class="line"><span class="keyword">set</span> io.compression.codecs=org.apache.hadoop.io.compress.GzipCodec;</div><div class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">table</span> test_rcfile <span class="keyword">PARTITION</span>(dt=<span class="string">'2016-09-20'</span>)</div><div class="line"><span class="keyword">SELECT</span>  ...</div><div class="line"> <span class="keyword">FROM</span> dw.user_action <span class="keyword">WHERE</span> dt=<span class="string">'2016-09-20'</span>;</div><div class="line"></div><div class="line"><span class="comment">--ParquetFile</span></div><div class="line"><span class="keyword">set</span> hive.exec.compress.output=<span class="literal">true</span>;</div><div class="line"><span class="keyword">set</span> mapred.output.compress=<span class="literal">true</span>;</div><div class="line"><span class="keyword">set</span> mapred.output.compression.codec=org.apache.hadoop.io.compress.GzipCodec;</div><div class="line"><span class="keyword">set</span> io.compression.codecs=org.apache.hadoop.io.compress.GzipCodec;</div><div class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">table</span> test_parquet <span class="keyword">PARTITION</span>(dt=<span class="string">'2016-09-20'</span>)</div><div class="line"><span class="keyword">SELECT</span>  ...</div><div class="line"> <span class="keyword">FROM</span> dw.user_action <span class="keyword">WHERE</span> dt=<span class="string">'2016-09-20'</span>;</div><div class="line"></div><div class="line"> <span class="comment">--ORCFile</span></div><div class="line"><span class="keyword">set</span> hive.exec.compress.output=<span class="literal">true</span>;</div><div class="line"><span class="keyword">set</span> mapred.output.compress=<span class="literal">true</span>;</div><div class="line"><span class="keyword">set</span> mapred.output.compression.codec=org.apache.hadoop.io.compress.GzipCodec;</div><div class="line"><span class="keyword">set</span> io.compression.codecs=org.apache.hadoop.io.compress.GzipCodec;</div><div class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">table</span> test_orcfile <span class="keyword">PARTITION</span>(dt=<span class="string">'2016-09-20'</span>)</div><div class="line"><span class="keyword">SELECT</span>  ...</div><div class="line"> <span class="keyword">FROM</span> dw.user_action <span class="keyword">WHERE</span> dt=<span class="string">'2016-09-20'</span>;</div></pre></td></tr></table></figure>
+<p>记录数 120195204<br>源文件大小 <strong>58.5 G</strong> （textfile 未压缩）</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>insert耗时(S)</th>
+<th>存储空间(G)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ORCFile</td>
+<td>318.197</td>
+<td>15.6 G</td>
+</tr>
+<tr>
+<td>Parquet</td>
+<td>361.207</td>
+<td>16.2 G</td>
+</tr>
+<tr>
+<td>RCFile</td>
+<td>232.284</td>
+<td>17.1 G</td>
+</tr>
+<tr>
+<td>Sequence</td>
+<td>283.8</td>
+<td>47.5 G</td>
+</tr>
+<tr>
+<td>TextFile</td>
+<td>236.187</td>
+<td>22.0 G</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>查询性能</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">-- 方案一，测试整行记录的查询效率：</span></div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> dw.user_action <span class="keyword">where</span> dt=<span class="string">'2016-09-20'</span> <span class="keyword">and</span> u_diu=<span class="string">'869436020507709'</span> ;  </div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> test_textfile <span class="keyword">where</span> u_diu=<span class="string">'869436020507709'</span> ;  </div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> test_sequencefile <span class="keyword">where</span> u_diu=<span class="string">'869436020507709'</span> ;   </div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> test_rcfile <span class="keyword">where</span> u_diu=<span class="string">'869436020507709'</span> ;  </div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> test_parquet <span class="keyword">where</span> u_diu=<span class="string">'869436020507709'</span> ;  </div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> test_orcfile <span class="keyword">where</span> u_diu=<span class="string">'869436020507709'</span> ;  </div><div class="line"></div><div class="line"><span class="comment">-- 方案二，测试特定列的查询效率：</span></div><div class="line"><span class="keyword">select</span> u_diu,u_xinge <span class="keyword">from</span> dw.user_action <span class="keyword">where</span> dt=<span class="string">'2016-09-20'</span> <span class="keyword">and</span> u_diu=<span class="string">'869436020507709'</span> ;  </div><div class="line"><span class="keyword">select</span> u_diu,u_xinge <span class="keyword">from</span> test_textfile <span class="keyword">where</span> u_diu=<span class="string">'869436020507709'</span> ;  </div><div class="line"><span class="keyword">select</span> u_diu,u_xinge <span class="keyword">from</span> test_sequencefile <span class="keyword">where</span> u_diu=<span class="string">'869436020507709'</span> ;   </div><div class="line"><span class="keyword">select</span> u_diu,u_xinge <span class="keyword">from</span> test_rcfile <span class="keyword">where</span> u_diu=<span class="string">'869436020507709'</span> ;  </div><div class="line"><span class="keyword">select</span> u_diu,u_xinge <span class="keyword">from</span> test_parquet <span class="keyword">where</span> u_diu=<span class="string">'869436020507709'</span> ;  </div><div class="line"><span class="keyword">select</span> u_diu,u_xinge <span class="keyword">from</span> test_orcfile <span class="keyword">where</span> u_diu=<span class="string">'869436020507709'</span> ;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>文件格式</th>
+<th>查询整行记录耗时（S）</th>
+<th>查询特定列记录耗时（S）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text(未压缩)</td>
+<td>77.911</td>
+<td>76.12</td>
+</tr>
+<tr>
+<td>text</td>
+<td>64.373</td>
+<td>65.867</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td>104.282</td>
+<td>84.249</td>
+</tr>
+<tr>
+<td>rcfile</td>
+<td>42.22</td>
+<td>36.359</td>
+</tr>
+<tr>
+<td>parquet</td>
+<td>75.876</td>
+<td>37.206</td>
+</tr>
+<tr>
+<td>orcfile</td>
+<td>57.094</td>
+<td>34.228</td>
+</tr>
+</tbody>
+</table>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ol>
+<li><a href="http://www.infoq.com/cn/articles/hadoop-file-format" target="_blank" rel="external">浅析Hadoop文件格式</a></li>
+<li><a href="http://yugouai.iteye.com/blog/1851606" target="_blank" rel="external">Hive文件存储格式的测试比较</a> </li>
+<li><a href="http://yugouai.iteye.com/blog/1851157" target="_blank" rel="external">Hive文件存储格式</a> </li>
+<li><a href="http://www.infoq.com/cn/articles/in-depth-analysis-of-parquet-column-storage-format" target="_blank" rel="external">深入分析Parquet列式存储格式</a></li>
+<li><a href="http://dongxicheng.org/mapreduce-nextgen/columnar-storage-parquet-and-orc/" target="_blank" rel="external">大数据开源列式存储引擎Parquet和ORC</a></li>
+<li><a href="http://research.google.com/pubs/pub36632.html" target="_blank" rel="external">Dremel: Interactive Analysis of Web-Scale Datasets</a></li>
+<li><a href="http://www.slideshare.net/Hadoop_Summit/orc-2015-faster-better-smaller-49481231" target="_blank" rel="external">ORC 2015: Faster, Better, Smaller</a></li>
+</ol>
+<hr>
+<p><img src="https://licensebuttons.net/l/by/2.5/cn/88x31.png" alt="">本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://shidata.com" target="_blank" rel="external">识数大数据</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://wenlonggit.github.io/2017/05/03/hadoop-snapshot/">http://wenlonggit.github.io/2017/05/03/hadoop-snapshot/</a></p>
+
+        </div>
+        
+        <!-- 不蒜统计 -->
+        <span style="display: inline;" id="busuanzi_container_page_pv">本文已被访问 <span id="busuanzi_value_page_pv" font="微软雅黑" style="color:black"></span> 次，感谢您的来访！</span>
+        
+           <!-- hexo打赏 -->
+    
+    
+        <!-- css -->
+        <style type="text/css">
+        .center {
+        text-align: center;
+        }
+        .hidden {
+        display: none;
+        }
+        .donate_bar a.btn_donate{
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+        _background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+        <!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+        因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+        为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+        嵌入其它博客时不一定要它们。 -->
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+        <!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+        }
+
+        .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+        .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+        }
+        .bold{ font-weight: bold; }
+        </style>
+        <!-- /css -->
+
+        <!-- Donate Module -->
+        <div id="donate_module">
+
+        <!-- btn_donate & tips -->
+        <div id="donate_board" class="donate_bar center">
+        <br>
+        ------------------------------------------------------------------------------------------------------------------------------
+        <br>
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">
+        Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+        </span>
+
+        </div>
+        <!-- /btn_donate & tips -->
+
+        <!-- donate guide -->
+
+        <div id="donate_guide" class="donate_bar center hidden">
+        <br>
+        ------------------------------------------------------------------------------------------------------------------------------
+        <br>
+
+        <a href="http://ol5qowkge.bkt.clouddn.com/pay/wechat.jpg" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+        <img src="http://ol5qowkge.bkt.clouddn.com/pay/wechat.jpg" title="微信打赏 Colin" height="190px" width="auto"/>
+        </a>
+
+        &nbsp;&nbsp;
+
+        <a href="http://ol5qowkge.bkt.clouddn.com/pay/paypal.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+        <img src="http://ol5qowkge.bkt.clouddn.com/pay/paypal.jpg" title="支付宝打赏 Colin" height="190px" width="auto"/>
+        </a>
+
+        <span class="donate_txt">
+        Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+        </span>
+
+        </div>
+        <!-- /donate guide -->
+
+        <!-- donate script -->
+        <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+        $('#donate_board').addClass('hidden');
+        $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web(){
+        $('#donate').submit();
+        }
+
+        var original_window_onload = window.onload;
+        window.onload = function () {
+        if (original_window_onload) {
+        original_window_onload();
+        }
+        document.getElementById('donate_board_wdg').className = 'hidden';
+        }
+        </script>
+        <!-- /donate script -->
+        </div>
+        <!-- /Donate Module -->
+    
+
+
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="uyan_frame"></div>
+
+    
+    </section>
+
+
+
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/weimingzhishang" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/profile.php?id=100011404535284&ref=bookmarks" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="https://plus.google.com/u/0/105215634832027123898" target="_blank">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/wenlongGit" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/1891460800/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/05/02/ml-topicmodule/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">机器学习——TopicModel介绍</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/03/hadoop-snapshot/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/hadoop/row.png)" alt="" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/05/03/hadoop-snapshot/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-05-03T03:14:08.000Z" itemprop="datePublished">2017-05-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/02/ml-topicmodule/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/hexo_github.png)" alt="机器学习——TopicModel介绍" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/机器学习/">机器学习</a></p>
+                            <p class="item-title"><a href="/2017/05/02/ml-topicmodule/" class="title">机器学习——TopicModel介绍</a></p>
+                            <p class="item-date"><time datetime="2017-05-02T11:08:03.000Z" itemprop="datePublished">2017-05-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/03/13/hexo-install-3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg)" alt="个人博客部署——域名绑定与插件安装" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a></p>
+                            <p class="item-title"><a href="/2017/03/13/hexo-install-3/" class="title">个人博客部署——域名绑定与插件安装</a></p>
+                            <p class="item-date"><time datetime="2017-03-13T13:00:21.000Z" itemprop="datePublished">2017-03-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/02/12/hexo-install-2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg)" alt="个人博客部署——部署Hexo到Github Pages" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a></p>
+                            <p class="item-title"><a href="/2017/02/12/hexo-install-2/" class="title">个人博客部署——部署Hexo到Github Pages</a></p>
+                            <p class="item-date"><time datetime="2017-02-12T13:00:21.000Z" itemprop="datePublished">2017-02-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/02/10/hexo-install/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/hexo_github.png)" alt="个人博客部署——hexo安装" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a></p>
+                            <p class="item-title"><a href="/2017/02/10/hexo-install/" class="title">个人博客部署——hexo安装</a></p>
+                            <p class="item-date"><time datetime="2017-02-10T11:08:03.000Z" itemprop="datePublished">2017-02-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/开发环境和工具/">开发环境和工具</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TopicModel/">TopicModel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文本挖掘/">文本挖掘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/TopicModel/" style="font-size: 10px;">TopicModel</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a> <a href="/tags/文本挖掘/" style="font-size: 10px;">文本挖掘</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://shidata.com">识数</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Alex Zhang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                <!-- 不蒜统计 -->
+                <span style="display: inline;" id="busuanzi_container_site_uv">本站总访客数 <span id="busuanzi_value_site_uv" font="微软雅黑" style="color:white"></span> 位</span>
+                <span style="display: inline;" id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv" font="微软雅黑" style="color:white"></span> 次</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+        
+    
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2132192"></script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
