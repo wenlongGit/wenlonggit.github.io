@@ -17,7 +17,7 @@
 <meta property="og:description" content="一、什么是Topic Module在机器学习以及自然语言处理中, topic model是一种能够在一系列文档集中发现抽象的”主题”的统计学模型。主题模型通常被用作在文本中发现隐含的语义结构的文本挖掘(text-mining)工具。
 举个直接的例子,对于一个有特定主题的文档,我们通常可以在文档中找到或多或少频繁出现的特定域的单词,比如”狗”和”骨头”通常出现在和狗相关的文档中,而”猫”和”喵喵”通">
 <meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/hexo_github.png">
-<meta property="og:updated_time" content="2017-05-03T03:02:21.000Z">
+<meta property="og:updated_time" content="2017-05-05T02:09:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习——TopicModel介绍">
 <meta name="twitter:description" content="一、什么是Topic Module在机器学习以及自然语言处理中, topic model是一种能够在一系列文档集中发现抽象的”主题”的统计学模型。主题模型通常被用作在文本中发现隐含的语义结构的文本挖掘(text-mining)工具。
@@ -179,7 +179,13 @@ var _hmt = _hmt || [];
 <p>一个文档也可能含有多个主题，且以一定的比例呈现。比如，一篇10%的比例是在写“猫”，90%是在写“狗”的文章，其中出现与狗相关的单词的数量应该是猫的9倍。由Topic Mdoel构建的“主题”通常是一系列相似的词。主题模型通过数学框架捕捉到文档的“直觉”语义，根据单词的统计信息决定文档的主题是什么。</p>
 <p>主题模型也被称作概率主题模型。它是用于发现泛文本文体的潜在语义结构的统计算法。在信息时代，我们每天遇到的书面材料数量已经超出了我们的处理能力。而主题模型可以帮助我们去组织和洞察理解这些大量的非机构化文本材料。</p>
 <p>最初，主题模型被作为文本挖掘工具来检测遗传信息、图片、网络等数据中的有益的结构化信息。</p>
-<p>未完待续。。。</p>
+<h2 id="二、Topic-Model的发展历史"><a href="#二、Topic-Model的发展历史" class="headerlink" title="二、Topic Model的发展历史"></a>二、Topic Model的发展历史</h2><p>最初，Papadimitriou, Raghavan, Tamaki and Vempala 等人在1998年提出了topic model。Thomas Hofmann于1999年提出了PLSA(probabilistic latent semantic analysis)。目前，应用的最广泛的topic model要属LDA(Latent Dirichlet allocation)，LDA是PLSA的泛化，由David Blei, Andrew Ng, and Michael I. Jordan等大牛于2002年提出。</p>
+<p>LDA在文档-主题、主题-单词分布中引入了稀疏狄利克雷先验分布(Dirichlet prior distributions)，文档只有少量的几类主题，而主题通常可以用几个单词来表达。</p>
+<p>其他的topic model一般都是LDA的扩展。</p>
+<h2 id="三、上下文信息的主题模型"><a href="#三、上下文信息的主题模型" class="headerlink" title="三、上下文信息的主题模型"></a>三、上下文信息的主题模型</h2><p>主题模型可以包括上下文信息，例如时间戳，作者信息或与文档相关的地理坐标。此外，网络信息(如文档作者之间的社交网络)也可以被建模。</p>
+<p>很多学者研究杂志或报纸随时间推移主题的变化趋势。</p>
+<h2 id="四、算法原理"><a href="#四、算法原理" class="headerlink" title="四、算法原理"></a>四、算法原理</h2><p>如图所示，为一个文档-单词矩阵，每列对应一个文档，每行对应一个单词。矩阵中的元素（单元格）中为单词出现在文档中的词频，颜色越深表示词频越高。对该矩阵进行行列转换，最终，主题模型将使用了相似单词的文档归类，同时也把出现在相似文档中的单词归类。归类结果中得到的文档-单词对集合就是“主题”。</p>
+<p><img src="http://ol5qowkge.bkt.clouddn.com/ml/topicmodel.jpeg" alt=""></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>1 <a href="https://en.wikipedia.org/wiki/Topic_model" target="_blank" rel="external">Topic Model WikiPedia</a></p>
 <hr>
 <p><img src="https://licensebuttons.net/l/by/2.5/cn/88x31.png" alt="">本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://shidata.com" target="_blank" rel="external">识数大数据</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://wenlonggit.github.io/2017/05/02/ml-topicmodule/">http://wenlonggit.github.io/2017/05/02/ml-topicmodule/</a></p>
