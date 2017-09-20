@@ -3,25 +3,53 @@
 <head>
     <meta charset="utf-8">
     
-    <title>识数</title>
+    <title>Spark Streaming 编程指南&amp;快速入门 | 识数</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="html
-___
-![](https://licensebuttons.net/l/by/2.5/cn/88x31.png)本作品采用[知识共享署名 2.5 中国大陆许可协议](http://creativecommons.org/licenses/by/2.5/cn/)进行许可，欢迎转载，但转载请注明来自[识数大数据](http://shidata.co">
-<meta property="og:type" content="website">
-<meta property="og:title" content="识数">
-<meta property="og:url" content="http://wenlonggit.github.io/404.html">
+        <meta name="keywords" content="spark,sparkstreaming" />
+    
+    <meta name="description" content="检查项
+
+[x] 依赖链接（Linking）
+[x] 初始化 StreamingContext
+[x] 离散流（DStreams）
+[x] DStreams 输入源与接收器（Receivers）
+[x] DStreams 转化（Transformations）
+[x] DStreams的输出操作
+[x] DataFrame和SQL操作
+[x] MLlib 操作
+[x] 缓存/持久化（Caching">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark Streaming 编程指南&快速入门">
+<meta property="og:url" content="http://wenlonggit.github.io/2017/09/20/sparkstreaming-tutorial/index.html">
 <meta property="og:site_name" content="识数">
-<meta property="og:description" content="html
-___
-![](https://licensebuttons.net/l/by/2.5/cn/88x31.png)本作品采用[知识共享署名 2.5 中国大陆许可协议](http://creativecommons.org/licenses/by/2.5/cn/)进行许可，欢迎转载，但转载请注明来自[识数大数据](http://shidata.co">
-<meta property="og:updated_time" content="2017-03-12T16:39:29.000Z">
+<meta property="og:description" content="检查项
+
+[x] 依赖链接（Linking）
+[x] 初始化 StreamingContext
+[x] 离散流（DStreams）
+[x] DStreams 输入源与接收器（Receivers）
+[x] DStreams 转化（Transformations）
+[x] DStreams的输出操作
+[x] DataFrame和SQL操作
+[x] MLlib 操作
+[x] 缓存/持久化（Caching">
+<meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png">
+<meta property="og:updated_time" content="2017-09-20T09:52:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="识数">
-<meta name="twitter:description" content="html
-___
-![](https://licensebuttons.net/l/by/2.5/cn/88x31.png)本作品采用[知识共享署名 2.5 中国大陆许可协议](http://creativecommons.org/licenses/by/2.5/cn/)进行许可，欢迎转载，但转载请注明来自[识数大数据](http://shidata.co">
+<meta name="twitter:title" content="Spark Streaming 编程指南&快速入门">
+<meta name="twitter:description" content="检查项
+
+[x] 依赖链接（Linking）
+[x] 初始化 StreamingContext
+[x] 离散流（DStreams）
+[x] DStreams 输入源与接收器（Receivers）
+[x] DStreams 转化（Transformations）
+[x] DStreams的输出操作
+[x] DataFrame和SQL操作
+[x] MLlib 操作
+[x] 缓存/持久化（Caching">
+<meta name="twitter:image" content="http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png">
     
 
     
@@ -144,33 +172,263 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    识数
+    <a class="page-title-link" href="/categories/大数据工程/">大数据工程</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="page-undefined" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-sparkstreaming-tutorial" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Spark Streaming 编程指南&amp;快速入门
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2017/09/20/sparkstreaming-tutorial/" class="article-date">
+    <time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spark/">spark</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sparkstreaming/">sparkstreaming</a></li></ul>
+
+            </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <!DOCTYPE HTML>
-<html>
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8;">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="robots" content="all">
-  <meta name="robots" content="index,follow">
-</head>
-<body>
+            <p>检查项</p>
+<ul>
+<li>[x] 依赖链接（Linking）</li>
+<li>[x] 初始化 StreamingContext</li>
+<li>[x] 离散流（DStreams）</li>
+<li>[x] DStreams 输入源与接收器（Receivers）</li>
+<li>[x] DStreams 转化（Transformations）</li>
+<li>[x] DStreams的输出操作</li>
+<li>[x] DataFrame和SQL操作</li>
+<li>[x] MLlib 操作</li>
+<li>[x] 缓存/持久化（Caching / Persistence）</li>
+<li>[ ] 检查点 （Checkpointing）</li>
+<li>[ ] 累加器（Accumulators），广播变量（Broadcast Variables），检查点（Checkpoints）  </li>
+<li>[ ] 应用程序的部署</li>
+<li>[ ] 应用程序的监控</li>
+</ul>
+<hr>
+<blockquote>
+<p>说明:</p>
+<p>  以下为参考<a href="http://spark.apache.org/docs/2.0.1/streaming-programming-guide.html" target="_blank" rel="external">SparkStreaming编程指南</a>，结合实际项目需要，边学习边记录快速入门的要义。</p>
+<p>使用的各软件版本为：</p>
+<ul>
+<li><p>Spark  2.0.1</p>
+</li>
+<li><p>Python 2.6.6 </p>
+</li>
+<li><p>Kafka 0.9.0.1</p>
+</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="依赖链接（Linking）"><a href="#依赖链接（Linking）" class="headerlink" title="依赖链接（Linking）"></a>依赖链接（Linking）</h3><p>​   对于使用scala或者java语言的Spark Streaming项目，需要添加相应的依赖：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// Maven </div><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;spark-streaming_2.11&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;2.1.0&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line">// SBT</div><div class="line">libraryDependencies += "org.apache.spark" % "spark-streaming_2.11" % "2.1.0"</div></pre></td></tr></table></figure>
+<p>​   对于使用Kafka、Flume等第三方软件做数据输入源的，由于SparkStreaming核心API中不包含第三方的接口，也需要在项目中引入依赖包，通常为<code>spark-streaming-xyz_2.11</code> ，常见的需要引入的依赖包如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入源</th>
+<th style="text-align:center">依赖包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Kafka</td>
+<td style="text-align:center">spark-streaming-kafka-0-8_2.11</td>
+</tr>
+<tr>
+<td style="text-align:center">Flume</td>
+<td style="text-align:center">spark-streaming-flume_2.11</td>
+</tr>
+</tbody>
+</table>
+<h3 id="初始化-StreamingContext"><a href="#初始化-StreamingContext" class="headerlink" title="初始化 StreamingContext"></a>初始化 StreamingContext</h3><p>​   要初始化一个SaprkStreaming应用程序，需要构建一个<strong>StreamingContext</strong> 对象，它是SparkStreaming程序所有功能的主入口。</p>
+<pre><code>StreamingContext可以通过SparkContext来创建
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</div><div class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</div><div class="line"></div><div class="line">sc = SparkContext(master, appName)</div><div class="line">ssc = StreamingContext(sc, <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<pre><code>其中，
 
-<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homepageurl="http://blog.shidata.com " homepagename="回到我的主页"></script>
+**master** 是以下枚举之一：[Spark, Mesos or YARN cluster URL](http://spark.apache.org/docs/2.0.1/submitting-applications.html#master-urls), 或者填写 **local[\*]** 代表以本地模式运行。由于我们的集群是运行在yarn之上的。这里填写yarn。该选项也可以不填，在提交spark-submit程序的时候，通过参数 —master yarn来指定。
 
-</body>
-</html>html
-___
-![](https://licensebuttons.net/l/by/2.5/cn/88x31.png)本作品采用[知识共享署名 2.5 中国大陆许可协议](http://creativecommons.org/licenses/by/2.5/cn/)进行许可，欢迎转载，但转载请注明来自[识数大数据](http://shidata.com)，并保持转载后文章内容的完整。本人保留所有版权相关权利。
-本文链接：http://wenlonggit.github.io/404.html
+ **appName**是Spark程序的运行时候再web ui上展示的名字。
+
+**1** 为批处理间隔（batch interval），单位是秒。这个间隔要根据Spark应用程序与集群资源的延迟要求设置。
+</code></pre><p>​   初始化完毕StreamingContext后，要完成一个完成Streaming程序还需要以下几步：</p>
+<ol>
+<li><p>通过创建inputDStreams来定义输入源（input sources）</p>
+</li>
+<li><p>通过对DStreams应用变换（transformation）和输出（output）操作来定义流计算（streaming computations）。</p>
+</li>
+<li><p>使用streamingContext.start()开始接收并处理数据</p>
+</li>
+<li><p>使用streamingContext.awaitTermination()等待数据处理结束(包括手动结束以及任何错误导致的结束 )</p>
+</li>
+<li><p>处理程序也可以通过streamingContext.stop()来手动结束 </p>
+</li>
+</ol>
+<pre><code>主要注意的几点：
+</code></pre><ul>
+<li>一旦context被started，其他新的流式计算（streaming computation）就不能在此context种创建或者添加。</li>
+<li>一旦context被stopped，此context就不能被重启（restarted)</li>
+<li>一个JVM中，只能同时活跃（active）一个streamingContext</li>
+<li>StreamingContext中的stop()也会停止SparkContext，如果只想stop StreamingContext，可以将stopSparkContext的可选参数设置为false</li>
+<li>一个SparkContext可以重复使用来创建多个StreamingContexts。前提是在一个新的StreamingContext创建之前的StreamingContext必须已经stopped（SparkContext不能停）</li>
+</ul>
+<h3 id="离散流（DStreams）"><a href="#离散流（DStreams）" class="headerlink" title="离散流（DStreams）"></a>离散流（DStreams）</h3><p>​   <strong>Discretized Stream</strong>是Streaming的一个基本的抽象概念。它表示连续一个连续的数据流，可以是从数据源接收的输入数据流，也可以是从输入流中通过转换操作产生的处理数据流。在Spark内，DStreams代表一系列连续的RDDS（RDD是Spark对不变的，分布式数据集的抽象），DStream中的每个RDD都包含了一个确定批处理间隔的数据。具体见下图：</p>
+<p><img src="http://ol5qowkge.bkt.clouddn.com/study/dstreams.png" alt="alt"></p>
+<p>​   对DStream应用的任何操作都转换为基础RDD上的操作。例如，在将行转换为字的数据流的demo中，对行DStream中的每个RDD应用flatMap操作以生成字DStream的RDD。如下图所示: </p>
+<p><img src="http://ol5qowkge.bkt.clouddn.com/study/dstreams_rdds.png" alt="alt"></p>
+<h3 id="DStreams-输入源与接收器（Receivers）"><a href="#DStreams-输入源与接收器（Receivers）" class="headerlink" title="DStreams 输入源与接收器（Receivers）"></a>DStreams 输入源与接收器（Receivers）</h3><p>​   Input DStreams 是指从数据流源接收的输入数据流。每个输入DStream（文件流除外）与Receiver 对象相关联，该对象从数据源接收数据并将其存储在Spark的内存中进行处理。</p>
+<p>​   SparkStreaming提供了两种内置的数据流源：</p>
+<ul>
+<li>基础数据源：可通过StreamingContext API直接使用的数据源，例如，文件系统以及socket连接。</li>
+<li><p>高级数据源：比如 Kafka, Flume, Kinesis之类的数据源。需要通过额外的工具类连接，添加额外的依赖。</p>
+<p>​需要注意的是，如果需要在流式应用中并行输入多个数据源，则需要创建多个input Dstreams，这样就能创建能够接收多个数据源的多个receivers。但请注意，Spark worker / executor是一个长期运行的任务，因此它需要占用分配给Spark Streaming应用程序的核（cores)。因此，需要留足够的核数（cores，如果是本地模式，需要留足够的线程数）来保证应用运行receivers以及处理接收到的数据。</p>
+<p>​需要谨记的点：</p>
+</li>
+</ul>
+<ul>
+<li>当在本地运行Spark Streaming程序时，不要使用“local”或“local [1]”作为master URL。这两个都意味着只有一个线程将用于本地运行任务。如果使用基于接收器（例如套接字（sockets），Kafka，Flume等）的输入DStream，则单个线程将用于运行接收器，没有线程用于处理接收的数据。</li>
+<li>同理，在集群上运行，分配给Spark Streaming应用程序的核数必须大于接收器数量。否则应用只能接收数据，不能处理数据。</li>
+</ul>
+<h5 id="基础数据源（basic-sources）"><a href="#基础数据源（basic-sources）" class="headerlink" title="基础数据源（basic sources）"></a>基础数据源（basic sources）</h5><p>​   在快速开始的<a href="https://github.com/apache/spark/blob/master/examples/src/main/python/streaming/network_wordcount.py" target="_blank" rel="external">demo</a>中，我们使用 <code>ssc.socketTextStream(...)</code> 创建了一个从TCP socket连接中接收数据的DStream文本数据流。除了sockets，StreamingContext API也提供了从文件输入源创建DStreams的方法。</p>
+<ul>
+<li><p><strong>文件流（File Streams）</strong>: 从和HDFS API兼容的任何文件系统（HDFS，S3，NFS等）中的文件读取数据，可以按照如下方式创建DStream：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">streamingContext.textFileStream(dataDirectory)</div></pre></td></tr></table></figure>
+<p>​ Spark Streaming 会持续监控任何在dataDirectory文件夹中创建的文件（但不支持监控dataDirectory目录中的嵌套子目录中创建的文件），需要注意：</p>
+<ul>
+<li>文件中的数据必须是相同的格式</li>
+<li>必须是在dataDirectory目录中，以原子（atomically）方式移动（moving）或重名到此目录的文件</li>
+<li>文件一旦进入dataDirectory目录，就不能改动了。因此，如果文件中仍然有持续的追加数据，新的数据将不会被StreamingContext读取到</li>
+</ul>
+<p>对于简单的text文件，直接调用streamingContext.textFileStream(datadirectory)即可。由于文件流（file streams）不需要运行receiver，因此不需要给streaming程序分配核数(cores)</p>
+<p><code>目前Python API中支持textFileStream, 还不支持fileStrem</code></p>
+</li>
+<li><p><strong>自定义接收器的流（Streams based on Custom Receivers）</strong>：可以通过自定义接收器接收的数据流创建DStreams，具体要参考<a href="http://spark.apache.org/docs/2.0.1/streaming-custom-receivers.html" target="_blank" rel="external">自定义接收器编程指南</a></p>
+</li>
+<li><p><strong>RDD队列作为流（Queue of RDDs as a Stream）</strong>： 如果我们要用测试数据测试一个Spark Streaming应用程序，可以使用streamingContext.queueStream(queueOfRDDs)创建一个基于RDDs序列的DStreams。这样，每个被push入queue的RDD都会被视为DStream的一批数据，并以流式方式处理他们</p>
+</li>
+</ul>
+<h5 id="高级数据源（Advanced-Source）"><a href="#高级数据源（Advanced-Source）" class="headerlink" title="高级数据源（Advanced Source）"></a>高级数据源（Advanced Source）</h5><p>​   <code>自Spark2.0.1开始，Spark Python API开始支持Kafka、Flume、Kinesis等高级数据源</code></p>
+<p>​   高级源的需要一些非Spark自带的库，以及一些比较复杂的第三方依赖。可以通过前面介绍的<em>依赖链接</em>来引入第三方依赖。</p>
+<p>​   高级源不可直接在Saprk shell中使用，所以在Spark shell中无法直接测试高级源。如果想要在Spark shell中直接测试高级源，需要将这些源以及相关依赖的jar包从maven下载下来，并加入到classpath中。</p>
+<p>​   高级源的版本兼容情况如下：</p>
+<ul>
+<li><strong>Kafka</strong> Spark Streaming 2.0.1兼容kafka broker 0.8.2.1及以上版本</li>
+<li><strong>Flume</strong> Spark Streaming2.0.1兼容flume 1.6.0</li>
+<li><strong>Kinesis</strong> Spark Streaming2.0.1兼容Kinesis client 1.2.1 </li>
+</ul>
+<h5 id="自定义源（Custom-Sources）"><a href="#自定义源（Custom-Sources）" class="headerlink" title="自定义源（Custom Sources）"></a>自定义源（Custom Sources）</h5><p>​   <code>Python API 不支持自定义源</code></p>
+<p>​   Input DStreams 可以从自定义的数据源中创建，需要实现自定义的receiver，以便从自定义源中接收数据并push给Spark处理。</p>
+<h5 id="接收器可靠性（Receiver-Reliability）"><a href="#接收器可靠性（Receiver-Reliability）" class="headerlink" title="接收器可靠性（Receiver Reliability）"></a>接收器可靠性（Receiver Reliability）</h5><p>​   Kafka、Flume等数据源支持传输的数据确认被收到。依据数据源的可靠性，如果从Kafka、Flume等可靠的数据源中接收数据，能够保证无论出现什么错误数据都不会丢失，因此，接收器的可靠性可根据源的可靠性分为两种：</p>
+<ul>
+<li>可靠的接收器：当数据被接收并被存储到Spark中后，可靠的接收器能够正确的发送确认信息给可靠的源。</li>
+<li>不可靠的接收器：不可靠的接收器不会发送确认信息给源。当允许数据丢失情况出现的场景下，可以使用不可靠的接收器。</li>
+</ul>
+<h3 id="DStreams-转化操作（Transformations）"><a href="#DStreams-转化操作（Transformations）" class="headerlink" title="DStreams 转化操作（Transformations）"></a>DStreams 转化操作（Transformations）</h3><p>​   和RDDs类似，Streaming的转化操作可以修改来自input DStream中的数据。DStreams支持许多基于一般RDD的转化操作，常用的如下：</p>
+<table>
+<thead>
+<tr>
+<th>转化操作</th>
+<th>释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>map</strong>(<em>func</em>)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>flatMap</strong>(<em>func</em>)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>filter</strong>(<em>func</em>)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>repartition</strong>(<em>numPartitions</em>)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>union</strong>(<em>otherStream</em>)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>count</strong>()</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>reduce</strong>(<em>func</em>)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>countByValue</strong>()</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>reduceByKey</strong>(<em>func</em>, [<em>numTasks</em>])</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>join</strong>(<em>otherStream</em>, [<em>numTasks</em>])</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>cogroup</strong>(<em>otherStream</em>, [<em>numTasks</em>])</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>transform</strong>(<em>func</em>)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>updateStateByKey</strong>(<em>func</em>)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="UpdateStateByKey-Operation"><a href="#UpdateStateByKey-Operation" class="headerlink" title="UpdateStateByKey Operation"></a>UpdateStateByKey Operation</h5><h5 id="Transform-Operation"><a href="#Transform-Operation" class="headerlink" title="Transform Operation"></a>Transform Operation</h5><h5 id="Window-Operations"><a href="#Window-Operations" class="headerlink" title="Window Operations"></a>Window Operations</h5><h5 id="Join-Operations"><a href="#Join-Operations" class="headerlink" title="Join Operations"></a>Join Operations</h5><h3 id="DStreams的输出操作"><a href="#DStreams的输出操作" class="headerlink" title="DStreams的输出操作"></a>DStreams的输出操作</h3><h3 id="DataFrame和SQL操作"><a href="#DataFrame和SQL操作" class="headerlink" title="DataFrame和SQL操作"></a>DataFrame和SQL操作</h3><h3 id="MLlib-操作"><a href="#MLlib-操作" class="headerlink" title="MLlib 操作"></a>MLlib 操作</h3><h3 id="缓存-持久化（Caching-Persistence）"><a href="#缓存-持久化（Caching-Persistence）" class="headerlink" title="缓存/持久化（Caching / Persistence）"></a>缓存/持久化（Caching / Persistence）</h3><h3 id="检查点-（Checkpointing）"><a href="#检查点-（Checkpointing）" class="headerlink" title="检查点 （Checkpointing）"></a>检查点 （Checkpointing）</h3><h3 id="累加器（Accumulators），广播变量（Broadcast-Variables），检查点（Checkpoints）"><a href="#累加器（Accumulators），广播变量（Broadcast-Variables），检查点（Checkpoints）" class="headerlink" title="累加器（Accumulators），广播变量（Broadcast Variables），检查点（Checkpoints）"></a>累加器（Accumulators），广播变量（Broadcast Variables），检查点（Checkpoints）</h3><h2 id="应用程序的部署"><a href="#应用程序的部署" class="headerlink" title="应用程序的部署"></a>应用程序的部署</h2><h2 id="应用程序的监控"><a href="#应用程序的监控" class="headerlink" title="应用程序的监控"></a>应用程序的监控</h2><h2 id="性能调优"><a href="#性能调优" class="headerlink" title="性能调优"></a>性能调优</h2><ul>
+<li>Reducing the Batch Processing Times</li>
+<li>Setting the Right Batch Interval</li>
+<li>Memory Tuning</li>
+</ul>
+<h2 id="Fault-tolerance-Semantics"><a href="#Fault-tolerance-Semantics" class="headerlink" title="Fault-tolerance Semantics"></a>Fault-tolerance Semantics</h2><h2 id="进一步参考"><a href="#进一步参考" class="headerlink" title="进一步参考"></a>进一步参考</h2><ul>
+<li><a href="http://spark.apache.org/docs/2.0.1/streaming-kafka-integration.html" target="_blank" rel="external">Kafka集成指南</a></li>
+<li>Spark Streaming Scala 相关文档<ul>
+<li><a href="">StreamingContext 与 DStream</a></li>
+<li><a href="">KafkaUtils, FlumeUtils, KinesisUtils</a></li>
+</ul>
+</li>
+<li>Spark Streaming Python API文档<ul>
+<li><a href="http://spark.apache.org/docs/2.0.1/api/python/pyspark.streaming.html#pyspark.streaming.StreamingContext" target="_blank" rel="external">StreamingContext</a> </li>
+<li><a href="http://spark.apache.org/docs/2.0.1/api/python/pyspark.streaming.html#pyspark.streaming.DStream" target="_blank" rel="external">DStream</a></li>
+<li><a href="http://spark.apache.org/docs/2.0.1/api/python/pyspark.streaming.html#pyspark.streaming.kafka.KafkaUtils" target="_blank" rel="external">KafkaUtils</a></li>
+</ul>
+</li>
+<li>相关demo<ul>
+<li><a href="https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/streaming" target="_blank" rel="external">Scala</a> </li>
+<li><a href="https://github.com/apache/spark/tree/master/examples/src/main/python/streaming" target="_blank" rel="external">Python</a></li>
+</ul>
+</li>
+<li>Spark Streaming 相关论文和视频<ul>
+<li><a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf" target="_blank" rel="external">论文</a></li>
+<li><a href="https://www.youtube.com/watch?v=g171ndOHgJ0&amp;feature=youtu.be" target="_blank" rel="external">视频</a> </li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><img src="https://licensebuttons.net/l/by/2.5/cn/88x31.png" alt="">本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://shidata.com" target="_blank" rel="external">识数大数据</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://wenlonggit.github.io/2017/09/20/sparkstreaming-tutorial/">http://wenlonggit.github.io/2017/09/20/sparkstreaming-tutorial/</a></p>
+
         </div>
         
         <!-- 不蒜统计 -->
@@ -413,6 +671,19 @@ ___
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/09/20/sparkshell-tutorial/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">SparkShell快速上手</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

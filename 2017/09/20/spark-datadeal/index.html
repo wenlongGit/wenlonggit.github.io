@@ -3,25 +3,74 @@
 <head>
     <meta charset="utf-8">
     
-    <title>识数</title>
+    <title>Spark数据读取与保存快速上手 | 识数</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="html
-___
-![](https://licensebuttons.net/l/by/2.5/cn/88x31.png)本作品采用[知识共享署名 2.5 中国大陆许可协议](http://creativecommons.org/licenses/by/2.5/cn/)进行许可，欢迎转载，但转载请注明来自[识数大数据](http://shidata.co">
-<meta property="og:type" content="website">
-<meta property="og:title" content="识数">
-<meta property="og:url" content="http://wenlonggit.github.io/404.html">
+        <meta name="keywords" content="spark" />
+    
+    <meta name="description" content="Spark支持多种输入与输出：
+
+文件格式与文件系统
+多种文件系统：HDFS NFS AmazonS3 
+多种文件格式：本地文件 JSON Sequencefile Parquet CSV
+
+
+Spark SQL中的结构化数据源
+JSON ApacheHive 
+
+
+数据库与键值存储
+JDBC HBase Elasticsearch Cassandra 
+
+
+
+
+1、文件格式Spark会针对文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark数据读取与保存快速上手">
+<meta property="og:url" content="http://wenlonggit.github.io/2017/09/20/spark-datadeal/index.html">
 <meta property="og:site_name" content="识数">
-<meta property="og:description" content="html
-___
-![](https://licensebuttons.net/l/by/2.5/cn/88x31.png)本作品采用[知识共享署名 2.5 中国大陆许可协议](http://creativecommons.org/licenses/by/2.5/cn/)进行许可，欢迎转载，但转载请注明来自[识数大数据](http://shidata.co">
-<meta property="og:updated_time" content="2017-03-12T16:39:29.000Z">
+<meta property="og:description" content="Spark支持多种输入与输出：
+
+文件格式与文件系统
+多种文件系统：HDFS NFS AmazonS3 
+多种文件格式：本地文件 JSON Sequencefile Parquet CSV
+
+
+Spark SQL中的结构化数据源
+JSON ApacheHive 
+
+
+数据库与键值存储
+JDBC HBase Elasticsearch Cassandra 
+
+
+
+
+1、文件格式Spark会针对文件">
+<meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png">
+<meta property="og:updated_time" content="2017-09-20T09:53:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="识数">
-<meta name="twitter:description" content="html
-___
-![](https://licensebuttons.net/l/by/2.5/cn/88x31.png)本作品采用[知识共享署名 2.5 中国大陆许可协议](http://creativecommons.org/licenses/by/2.5/cn/)进行许可，欢迎转载，但转载请注明来自[识数大数据](http://shidata.co">
+<meta name="twitter:title" content="Spark数据读取与保存快速上手">
+<meta name="twitter:description" content="Spark支持多种输入与输出：
+
+文件格式与文件系统
+多种文件系统：HDFS NFS AmazonS3 
+多种文件格式：本地文件 JSON Sequencefile Parquet CSV
+
+
+Spark SQL中的结构化数据源
+JSON ApacheHive 
+
+
+数据库与键值存储
+JDBC HBase Elasticsearch Cassandra 
+
+
+
+
+1、文件格式Spark会针对文件">
+<meta name="twitter:image" content="http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png">
     
 
     
@@ -144,33 +193,101 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    识数
+    <a class="page-title-link" href="/categories/大数据工程/">大数据工程</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="page-undefined" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-spark-datadeal" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Spark数据读取与保存快速上手
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2017/09/20/spark-datadeal/" class="article-date">
+    <time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spark/">spark</a></li></ul>
+
+            </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <!DOCTYPE HTML>
-<html>
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8;">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="robots" content="all">
-  <meta name="robots" content="index,follow">
-</head>
-<body>
+            <blockquote>
+<p>Spark支持多种输入与输出：</p>
+<ul>
+<li>文件格式与文件系统<ul>
+<li>多种文件系统：HDFS NFS AmazonS3 </li>
+<li>多种文件格式：本地文件 JSON Sequencefile Parquet CSV</li>
+</ul>
+</li>
+<li>Spark SQL中的结构化数据源<ul>
+<li>JSON ApacheHive </li>
+</ul>
+</li>
+<li>数据库与键值存储<ul>
+<li>JDBC HBase Elasticsearch Cassandra </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="1、文件格式"><a href="#1、文件格式" class="headerlink" title="1、文件格式"></a>1、文件格式</h3><p>Spark会针对文件扩展名称选择对应的处理方式，并且分装好，对用户透明。</p>
+<h5 id="1-1-文本文件"><a href="#1-1-文本文件" class="headerlink" title="1.1 文本文件"></a>1.1 文本文件</h5><p>Spark读取可以读取一个文本文件为一个RDD，文件的每一行是RDD的一个元素。也可以将多个文本文件一次性的读入为一个pair RDD，键是文件名，值是文件内容。</p>
+<ul>
+<li>读取文本文件</li>
+</ul>
+<p>Spark支持读取给定目录中的所有文件，以及在输入路径中使用通配符，如part-*.txt. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用 SparkContext的 textFile()函数。文件路径作为函数参数。</span></div><div class="line">input = sc.textFile(<span class="string">"file:///home/hadoop/user/wenlong/text.txt"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>保存本地文件</li>
+</ul>
+<p>Spark中可以使用saveAsTextFile()方法接收一个路径，将RDD中的内容都输出到对应的文件目录中。一般情况下，Spark不能控制哪些数输出到哪一个文件，不过有些数据格式可以支持。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result.saveAsTextFile(<span class="string">"xxxx"</span>)</div></pre></td></tr></table></figure>
+<h5 id="1-2-JSON"><a href="#1-2-JSON" class="headerlink" title="1.2 JSON"></a>1.2 JSON</h5><p>对于半结构化的JSON数据，Spark会把它当做文本文件读入，然后使用JSON解析器来对RDD中的值进行映射操作。也可以直接使用SparkSQL直接读取JSON数据。</p>
+<ul>
+<li>读取JSON </li>
+</ul>
+<p>Spark读取JSON文件时，假设读入的每一行都是一条JSON记录，如果有跨行的JSON数据，需要读入整个文件，然后对每个文件进行解析。在这里我们使用python自带的json库。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> json </div><div class="line">data = input.map(<span class="keyword">lambda</span> x:json.loads(x))</div></pre></td></tr></table></figure>
+<ul>
+<li>保存JSON </li>
+</ul>
+<p>Spark使用第三方JSON库，将字符串RDD转为解析好的JSON数据.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将上面读入的JSON串中的names抽取出，序列化为json文件保存</span></div><div class="line">(data.filter(<span class="keyword">lambda</span> x: x[<span class="string">"names"</span>]).map(<span class="keyword">lambda</span> x: json.dumps(x))).saveAsTextFile(outputFile)</div></pre></td></tr></table></figure>
+<h5 id="1-3-CSV-TSV文件，逗号分隔符或制表符分隔符"><a href="#1-3-CSV-TSV文件，逗号分隔符或制表符分隔符" class="headerlink" title="1.3 CSV/TSV文件，逗号分隔符或制表符分隔符"></a>1.3 CSV/TSV文件，逗号分隔符或制表符分隔符</h5><ul>
+<li>读取CSV </li>
+</ul>
+<p>读取CSV/TSV数据与JSON数据类似，都是需要先把文件当做普通文件读取，再对数据进行处理。这里我们使用python自带的csv库。如果恰好CSV文件中所有的字段均没有包含换行符，可以使用textFile()直接读取解析数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> csv</div><div class="line"><span class="keyword">import</span> StringIO</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadRecord</span><span class="params">(line)</span>:</span></div><div class="line">    <span class="string">"""解析一行CSV记录"""</span></div><div class="line">    input = StringIO.StringIO(line)</div><div class="line">    reader = csv.DicReader(input, fieldnames=[<span class="string">"name"</span>,<span class="string">"intresting"</span>])</div><div class="line">    <span class="keyword">return</span> reader.next()</div><div class="line">input = sc.textFile(inputFile).map(loadRecord)</div></pre></td></tr></table></figure>
+<p>如果字段中嵌有换行符，则需要读入每个文件，然后解析各段。如果每个文件都很大，则读取和解析可能会有瓶颈问题。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def loadRecord(fileNameContents)</div><div class="line">    """读取给定文件中的所有记录"""</div><div class="line">    input = StringIO.StringIO(fileNameContents[1])</div><div class="line">    reader = csv.DicReader(input, fieldnames=["name","intresting"])</div><div class="line">    return reader </div><div class="line">fullFileData = sc.wholeTextFiles(inputFile).flatMap(loadRecord)</div></pre></td></tr></table></figure>
+<ul>
+<li>保存CSV </li>
+</ul>
+<h5 id="1-4-SequenceFile"><a href="#1-4-SequenceFile" class="headerlink" title="1.4 SequenceFile"></a>1.4 SequenceFile</h5><h5 id="1-5-对象文件"><a href="#1-5-对象文件" class="headerlink" title="1.5 对象文件"></a>1.5 对象文件</h5><h4 id="2-文件系统"><a href="#2-文件系统" class="headerlink" title="2 文件系统"></a>2 文件系统</h4><h5 id="2-1-本地文件系统"><a href="#2-1-本地文件系统" class="headerlink" title="2.1 本地文件系统"></a>2.1 本地文件系统</h5><h5 id="2-2-HDFS"><a href="#2-2-HDFS" class="headerlink" title="2.2 HDFS"></a>2.2 HDFS</h5><h4 id="3-Spark-SQL中的结构化数据"><a href="#3-Spark-SQL中的结构化数据" class="headerlink" title="3 Spark SQL中的结构化数据"></a>3 Spark SQL中的结构化数据</h4><p>结构化数据是指由结构信息的数据，数据的所有记录都有一致的字段结构。</p>
+<p>一条SQL语句传递给Spark SQL，它会对一个数据源执行查询（选出一些字段，或对一些字段使用一些函数加工），得到由row对象组成的RDD，每个row都有一个get()方法，可以返回一般类型的数据供我们进行类型转换。也有专门的基本类型的get()方法，如：getFloat()、getInt()等。</p>
+<p>在Python中，可以使用row[cloumn_number]以及row.column_name来获取元素。</p>
+<h5 id="3-1-Apache-HIVE"><a href="#3-1-Apache-HIVE" class="headerlink" title="3.1 Apache HIVE"></a>3.1 Apache HIVE</h5><p>Spark SQL可以读取Hive支持的任何表。</p>
+<p>Spark SQL连接已有Hive的方法如下：</p>
+<ol>
+<li>将hive-site.xml复制到Spark的./conf/目录下。</li>
+<li>创建HiveContext对象</li>
+<li>使用Hive查询语句（HQL）查询</li>
+<li>得到以row为对象的RDD形式的数据结果集</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> HiveContext</div><div class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</div><div class="line"></div><div class="line">sc = SparkContext(<span class="string">"yarn"</span>, <span class="string">"Simple App"</span>)</div><div class="line">hiveCtx = HiveContext(sc)</div><div class="line">rows = hiveCtx.sql(<span class="string">"select * from dw.temp_user_info  "</span>) </div><div class="line">rows.write.parquet(<span class="string">"hdfs://Ucluster/user/hadoop/test/temp"</span>,<span class="string">'overwrite'</span>)</div><div class="line">names = rows.rdd.map(<span class="keyword">lambda</span> p: p.name).collect()</div><div class="line"><span class="keyword">print</span> names</div></pre></td></tr></table></figure>
+<h5 id="3-2-JSON"><a href="#3-2-JSON" class="headerlink" title="3.2 JSON"></a>3.2 JSON</h5><h4 id="4-数据库"><a href="#4-数据库" class="headerlink" title="4 数据库"></a>4 数据库</h4><h5 id="4-1-JDBC"><a href="#4-1-JDBC" class="headerlink" title="4.1 JDBC"></a>4.1 JDBC</h5><h5 id="4-2-HBase"><a href="#4-2-HBase" class="headerlink" title="4.2 HBase"></a>4.2 HBase</h5><hr>
+<p><img src="https://licensebuttons.net/l/by/2.5/cn/88x31.png" alt="">本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://shidata.com" target="_blank" rel="external">识数大数据</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://wenlonggit.github.io/2017/09/20/spark-datadeal/">http://wenlonggit.github.io/2017/09/20/spark-datadeal/</a></p>
 
-<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homepageurl="http://blog.shidata.com " homepagename="回到我的主页"></script>
-
-</body>
-</html>html
-___
-![](https://licensebuttons.net/l/by/2.5/cn/88x31.png)本作品采用[知识共享署名 2.5 中国大陆许可协议](http://creativecommons.org/licenses/by/2.5/cn/)进行许可，欢迎转载，但转载请注明来自[识数大数据](http://shidata.com)，并保持转载后文章内容的完整。本人保留所有版权相关权利。
-本文链接：http://wenlonggit.github.io/404.html
         </div>
         
         <!-- 不蒜统计 -->
@@ -413,6 +530,29 @@ ___
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/09/20/sparkshell-tutorial/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            SparkShell快速上手
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/09/20/pyspark-tutorial/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Spark-Python脚本快速上手</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
