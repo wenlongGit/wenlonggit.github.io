@@ -35,7 +35,7 @@
 [x] MLlib 操作
 [x] 缓存/持久化（Caching">
 <meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png">
-<meta property="og:updated_time" content="2017-09-20T09:52:28.000Z">
+<meta property="og:updated_time" content="2017-09-21T08:22:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark Streaming 编程指南&快速入门">
 <meta name="twitter:description" content="检查项
@@ -112,7 +112,7 @@ var _hmt = _hmt || [];
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/大数据工程/">大数据工程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/开发环境和工具/">开发环境和工具</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/大数据/">大数据</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/开发环境和工具/">开发环境和工具</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
                                     
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
@@ -172,7 +172,7 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/大数据工程/">大数据工程</a>
+    <a class="page-title-link" href="/categories/大数据/">大数据</a>
     </h1>
 </div>
                         <div class="main-body-content">
@@ -222,18 +222,13 @@ var _hmt = _hmt || [];
 <p>说明:</p>
 <p>  以下为参考<a href="http://spark.apache.org/docs/2.0.1/streaming-programming-guide.html" target="_blank" rel="external">SparkStreaming编程指南</a>，结合实际项目需要，边学习边记录快速入门的要义。</p>
 <p>使用的各软件版本为：</p>
-<ul>
-<li><p>Spark  2.0.1</p>
-</li>
-<li><p>Python 2.6.6 </p>
-</li>
-<li><p>Kafka 0.9.0.1</p>
-</li>
-</ul>
+<p>Spark  2.0.1</p>
+<p>Python 2.6.6 </p>
+<p>Kafka 0.9.0.1</p>
 </blockquote>
 <hr>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="依赖链接（Linking）"><a href="#依赖链接（Linking）" class="headerlink" title="依赖链接（Linking）"></a>依赖链接（Linking）</h3><p>​   对于使用scala或者java语言的Spark Streaming项目，需要添加相应的依赖：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// Maven </div><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;spark-streaming_2.11&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;2.1.0&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line">// SBT</div><div class="line">libraryDependencies += "org.apache.spark" % "spark-streaming_2.11" % "2.1.0"</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// Maven </div><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;spark-streaming_2.11&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;2.1.0&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line">// SBT</div><div class="line">libraryDependencies += &quot;org.apache.spark&quot; % &quot;spark-streaming_2.11&quot; % &quot;2.1.0&quot;</div></pre></td></tr></table></figure>
 <p>​   对于使用Kafka、Flume等第三方软件做数据输入源的，由于SparkStreaming核心API中不包含第三方的接口，也需要在项目中引入依赖包，通常为<code>spark-streaming-xyz_2.11</code> ，常见的需要引入的依赖包如下：</p>
 <table>
 <thead>
@@ -254,30 +249,22 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <h3 id="初始化-StreamingContext"><a href="#初始化-StreamingContext" class="headerlink" title="初始化 StreamingContext"></a>初始化 StreamingContext</h3><p>​   要初始化一个SaprkStreaming应用程序，需要构建一个<strong>StreamingContext</strong> 对象，它是SparkStreaming程序所有功能的主入口。</p>
-<pre><code>StreamingContext可以通过SparkContext来创建
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</div><div class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</div><div class="line"></div><div class="line">sc = SparkContext(master, appName)</div><div class="line">ssc = StreamingContext(sc, <span class="number">1</span>)</div></pre></td></tr></table></figure>
-<pre><code>其中，
-
-**master** 是以下枚举之一：[Spark, Mesos or YARN cluster URL](http://spark.apache.org/docs/2.0.1/submitting-applications.html#master-urls), 或者填写 **local[\*]** 代表以本地模式运行。由于我们的集群是运行在yarn之上的。这里填写yarn。该选项也可以不填，在提交spark-submit程序的时候，通过参数 —master yarn来指定。
-
- **appName**是Spark程序的运行时候再web ui上展示的名字。
-
-**1** 为批处理间隔（batch interval），单位是秒。这个间隔要根据Spark应用程序与集群资源的延迟要求设置。
-</code></pre><p>​   初始化完毕StreamingContext后，要完成一个完成Streaming程序还需要以下几步：</p>
+<p>StreamingContext可以通过SparkContext来创建</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</div><div class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</div><div class="line"></div><div class="line">sc = SparkContext(master, appName)</div><div class="line">ssc = StreamingContext(sc, <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<p>其中，</p>
+<p><strong>master</strong> 是以下枚举之一：<a href="http://spark.apache.org/docs/2.0.1/submitting-applications.html#master-urls" target="_blank" rel="external">Spark, Mesos or YARN cluster URL</a>, 或者填写 <strong>local[*]</strong> 代表以本地模式运行。由于我们的集群是运行在yarn之上的。这里填写yarn。该选项也可以不填，在提交spark-submit程序的时候，通过参数 —master yarn来指定。</p>
+<p> <strong>appName</strong>是Spark程序的运行时候再web ui上展示的名字。</p>
+<p><strong>1</strong> 为批处理间隔（batch interval），单位是秒。这个间隔要根据Spark应用程序与集群资源的延迟要求设置。</p>
+<p>​初始化完毕StreamingContext后，要完成一个完成Streaming程序还需要以下几步：</p>
 <ol>
-<li><p>通过创建inputDStreams来定义输入源（input sources）</p>
-</li>
-<li><p>通过对DStreams应用变换（transformation）和输出（output）操作来定义流计算（streaming computations）。</p>
-</li>
-<li><p>使用streamingContext.start()开始接收并处理数据</p>
-</li>
-<li><p>使用streamingContext.awaitTermination()等待数据处理结束(包括手动结束以及任何错误导致的结束 )</p>
-</li>
-<li><p>处理程序也可以通过streamingContext.stop()来手动结束 </p>
-</li>
+<li>通过创建inputDStreams来定义输入源（input sources）</li>
 </ol>
-<pre><code>主要注意的几点：
-</code></pre><ul>
+<p>2.通过对DStreams应用变换（transformation）和输出（output）操作来定义流计算（streaming computations）。</p>
+<p>3.使用streamingContext.start()开始接收并处理数据</p>
+<p>4.使用streamingContext.awaitTermination()等待数据处理结束(包括手动结束以及任何错误导致的结束 )</p>
+<p>5.处理程序也可以通过streamingContext.stop()来手动结束 </p>
+<p>主要注意的几点：</p>
+<ul>
 <li>一旦context被started，其他新的流式计算（streaming computation）就不能在此context种创建或者添加。</li>
 <li>一旦context被stopped，此context就不能被重启（restarted)</li>
 <li>一个JVM中，只能同时活跃（active）一个streamingContext</li>
@@ -292,18 +279,18 @@ var _hmt = _hmt || [];
 <p>​   SparkStreaming提供了两种内置的数据流源：</p>
 <ul>
 <li>基础数据源：可通过StreamingContext API直接使用的数据源，例如，文件系统以及socket连接。</li>
-<li><p>高级数据源：比如 Kafka, Flume, Kinesis之类的数据源。需要通过额外的工具类连接，添加额外的依赖。</p>
-<p>​需要注意的是，如果需要在流式应用中并行输入多个数据源，则需要创建多个input Dstreams，这样就能创建能够接收多个数据源的多个receivers。但请注意，Spark worker / executor是一个长期运行的任务，因此它需要占用分配给Spark Streaming应用程序的核（cores)。因此，需要留足够的核数（cores，如果是本地模式，需要留足够的线程数）来保证应用运行receivers以及处理接收到的数据。</p>
-<p>​需要谨记的点：</p>
-</li>
+<li>高级数据源：比如 Kafka, Flume, Kinesis之类的数据源。需要通过额外的工具类连接，添加额外的依赖。</li>
 </ul>
+<p>​需要注意的是，如果需要在流式应用中并行输入多个数据源，则需要创建多个input Dstreams，这样就能创建能够接收多个数据源的多个receivers。但请注意，Spark worker / executor是一个长期运行的任务，因此它需要占用分配给Spark Streaming应用程序的核（cores)。因此，需要留足够的核数（cores，如果是本地模式，需要留足够的线程数）来保证应用运行receivers以及处理接收到的数据。</p>
+<p>需要谨记的点：</p>
 <ul>
 <li>当在本地运行Spark Streaming程序时，不要使用“local”或“local [1]”作为master URL。这两个都意味着只有一个线程将用于本地运行任务。如果使用基于接收器（例如套接字（sockets），Kafka，Flume等）的输入DStream，则单个线程将用于运行接收器，没有线程用于处理接收的数据。</li>
 <li>同理，在集群上运行，分配给Spark Streaming应用程序的核数必须大于接收器数量。否则应用只能接收数据，不能处理数据。</li>
 </ul>
 <h5 id="基础数据源（basic-sources）"><a href="#基础数据源（basic-sources）" class="headerlink" title="基础数据源（basic sources）"></a>基础数据源（basic sources）</h5><p>​   在快速开始的<a href="https://github.com/apache/spark/blob/master/examples/src/main/python/streaming/network_wordcount.py" target="_blank" rel="external">demo</a>中，我们使用 <code>ssc.socketTextStream(...)</code> 创建了一个从TCP socket连接中接收数据的DStream文本数据流。除了sockets，StreamingContext API也提供了从文件输入源创建DStreams的方法。</p>
 <ul>
-<li><p><strong>文件流（File Streams）</strong>: 从和HDFS API兼容的任何文件系统（HDFS，S3，NFS等）中的文件读取数据，可以按照如下方式创建DStream：</p>
+<li><strong>文件流（File Streams）</strong> : 从和HDFS API兼容的任何文件系统（HDFS，S3，NFS等）中的文件读取数据，可以按照如下方式创建DStream：</li>
+</ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">streamingContext.textFileStream(dataDirectory)</div></pre></td></tr></table></figure>
 <p>​ Spark Streaming 会持续监控任何在dataDirectory文件夹中创建的文件（但不支持监控dataDirectory目录中的嵌套子目录中创建的文件），需要注意：</p>
 <ul>
@@ -313,12 +300,8 @@ var _hmt = _hmt || [];
 </ul>
 <p>对于简单的text文件，直接调用streamingContext.textFileStream(datadirectory)即可。由于文件流（file streams）不需要运行receiver，因此不需要给streaming程序分配核数(cores)</p>
 <p><code>目前Python API中支持textFileStream, 还不支持fileStrem</code></p>
-</li>
-<li><p><strong>自定义接收器的流（Streams based on Custom Receivers）</strong>：可以通过自定义接收器接收的数据流创建DStreams，具体要参考<a href="http://spark.apache.org/docs/2.0.1/streaming-custom-receivers.html" target="_blank" rel="external">自定义接收器编程指南</a></p>
-</li>
-<li><p><strong>RDD队列作为流（Queue of RDDs as a Stream）</strong>： 如果我们要用测试数据测试一个Spark Streaming应用程序，可以使用streamingContext.queueStream(queueOfRDDs)创建一个基于RDDs序列的DStreams。这样，每个被push入queue的RDD都会被视为DStream的一批数据，并以流式方式处理他们</p>
-</li>
-</ul>
+<p><strong>自定义接收器的流（Streams based on Custom Receivers）</strong>：可以通过自定义接收器接收的数据流创建DStreams，具体要参考<a href="http://spark.apache.org/docs/2.0.1/streaming-custom-receivers.html" target="_blank" rel="external">自定义接收器编程指南</a></p>
+<p><strong>RDD队列作为流（Queue of RDDs as a Stream）</strong>： 如果我们要用测试数据测试一个Spark Streaming应用程序，可以使用streamingContext.queueStream(queueOfRDDs)创建一个基于RDDs序列的DStreams。这样，每个被push入queue的RDD都会被视为DStream的一批数据，并以流式方式处理他们</p>
 <h5 id="高级数据源（Advanced-Source）"><a href="#高级数据源（Advanced-Source）" class="headerlink" title="高级数据源（Advanced Source）"></a>高级数据源（Advanced Source）</h5><p>​   <code>自Spark2.0.1开始，Spark Python API开始支持Kafka、Flume、Kinesis等高级数据源</code></p>
 <p>​   高级源的需要一些非Spark自带的库，以及一些比较复杂的第三方依赖。可以通过前面介绍的<em>依赖链接</em>来引入第三方依赖。</p>
 <p>​   高级源不可直接在Saprk shell中使用，所以在Spark shell中无法直接测试高级源。如果想要在Spark shell中直接测试高级源，需要将这些源以及相关依赖的jar包从maven下载下来，并加入到classpath中。</p>
@@ -397,36 +380,38 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<h5 id="UpdateStateByKey-Operation"><a href="#UpdateStateByKey-Operation" class="headerlink" title="UpdateStateByKey Operation"></a>UpdateStateByKey Operation</h5><h5 id="Transform-Operation"><a href="#Transform-Operation" class="headerlink" title="Transform Operation"></a>Transform Operation</h5><h5 id="Window-Operations"><a href="#Window-Operations" class="headerlink" title="Window Operations"></a>Window Operations</h5><h5 id="Join-Operations"><a href="#Join-Operations" class="headerlink" title="Join Operations"></a>Join Operations</h5><h3 id="DStreams的输出操作"><a href="#DStreams的输出操作" class="headerlink" title="DStreams的输出操作"></a>DStreams的输出操作</h3><h3 id="DataFrame和SQL操作"><a href="#DataFrame和SQL操作" class="headerlink" title="DataFrame和SQL操作"></a>DataFrame和SQL操作</h3><h3 id="MLlib-操作"><a href="#MLlib-操作" class="headerlink" title="MLlib 操作"></a>MLlib 操作</h3><h3 id="缓存-持久化（Caching-Persistence）"><a href="#缓存-持久化（Caching-Persistence）" class="headerlink" title="缓存/持久化（Caching / Persistence）"></a>缓存/持久化（Caching / Persistence）</h3><h3 id="检查点-（Checkpointing）"><a href="#检查点-（Checkpointing）" class="headerlink" title="检查点 （Checkpointing）"></a>检查点 （Checkpointing）</h3><h3 id="累加器（Accumulators），广播变量（Broadcast-Variables），检查点（Checkpoints）"><a href="#累加器（Accumulators），广播变量（Broadcast-Variables），检查点（Checkpoints）" class="headerlink" title="累加器（Accumulators），广播变量（Broadcast Variables），检查点（Checkpoints）"></a>累加器（Accumulators），广播变量（Broadcast Variables），检查点（Checkpoints）</h3><h2 id="应用程序的部署"><a href="#应用程序的部署" class="headerlink" title="应用程序的部署"></a>应用程序的部署</h2><h2 id="应用程序的监控"><a href="#应用程序的监控" class="headerlink" title="应用程序的监控"></a>应用程序的监控</h2><h2 id="性能调优"><a href="#性能调优" class="headerlink" title="性能调优"></a>性能调优</h2><ul>
+<h5 id="UpdateStateByKey-Operation"><a href="#UpdateStateByKey-Operation" class="headerlink" title="UpdateStateByKey Operation"></a>UpdateStateByKey Operation</h5><p>  To be edited </p>
+<h5 id="Transform-Operation"><a href="#Transform-Operation" class="headerlink" title="Transform Operation"></a>Transform Operation</h5><p>  To be edited </p>
+<h5 id="Window-Operations"><a href="#Window-Operations" class="headerlink" title="Window Operations"></a>Window Operations</h5><p>  To be edited </p>
+<h5 id="Join-Operations"><a href="#Join-Operations" class="headerlink" title="Join Operations"></a>Join Operations</h5><p>  To be edited </p>
+<h3 id="DStreams的输出操作"><a href="#DStreams的输出操作" class="headerlink" title="DStreams的输出操作"></a>DStreams的输出操作</h3><p>  To be edited </p>
+<h3 id="DataFrame和SQL操作"><a href="#DataFrame和SQL操作" class="headerlink" title="DataFrame和SQL操作"></a>DataFrame和SQL操作</h3><p>  To be edited </p>
+<h3 id="MLlib-操作"><a href="#MLlib-操作" class="headerlink" title="MLlib 操作"></a>MLlib 操作</h3><p>  To be edited </p>
+<h3 id="缓存-持久化（Caching-Persistence）"><a href="#缓存-持久化（Caching-Persistence）" class="headerlink" title="缓存/持久化（Caching / Persistence）"></a>缓存/持久化（Caching / Persistence）</h3><p>  To be edited </p>
+<h3 id="检查点-（Checkpointing）"><a href="#检查点-（Checkpointing）" class="headerlink" title="检查点 （Checkpointing）"></a>检查点 （Checkpointing）</h3><p>  To be edited </p>
+<h3 id="累加器（Accumulators），广播变量（Broadcast-Variables），检查点（Checkpoints）"><a href="#累加器（Accumulators），广播变量（Broadcast-Variables），检查点（Checkpoints）" class="headerlink" title="累加器（Accumulators），广播变量（Broadcast Variables），检查点（Checkpoints）"></a>累加器（Accumulators），广播变量（Broadcast Variables），检查点（Checkpoints）</h3><p>  To be edited </p>
+<h2 id="应用程序的部署"><a href="#应用程序的部署" class="headerlink" title="应用程序的部署"></a>应用程序的部署</h2><p>  To be edited </p>
+<h2 id="应用程序的监控"><a href="#应用程序的监控" class="headerlink" title="应用程序的监控"></a>应用程序的监控</h2><p>  To be edited </p>
+<h2 id="性能调优"><a href="#性能调优" class="headerlink" title="性能调优"></a>性能调优</h2><ul>
 <li>Reducing the Batch Processing Times</li>
 <li>Setting the Right Batch Interval</li>
 <li>Memory Tuning</li>
 </ul>
-<h2 id="Fault-tolerance-Semantics"><a href="#Fault-tolerance-Semantics" class="headerlink" title="Fault-tolerance Semantics"></a>Fault-tolerance Semantics</h2><h2 id="进一步参考"><a href="#进一步参考" class="headerlink" title="进一步参考"></a>进一步参考</h2><ul>
-<li><a href="http://spark.apache.org/docs/2.0.1/streaming-kafka-integration.html" target="_blank" rel="external">Kafka集成指南</a></li>
-<li>Spark Streaming Scala 相关文档<ul>
-<li><a href="">StreamingContext 与 DStream</a></li>
-<li><a href="">KafkaUtils, FlumeUtils, KinesisUtils</a></li>
-</ul>
-</li>
-<li>Spark Streaming Python API文档<ul>
-<li><a href="http://spark.apache.org/docs/2.0.1/api/python/pyspark.streaming.html#pyspark.streaming.StreamingContext" target="_blank" rel="external">StreamingContext</a> </li>
-<li><a href="http://spark.apache.org/docs/2.0.1/api/python/pyspark.streaming.html#pyspark.streaming.DStream" target="_blank" rel="external">DStream</a></li>
-<li><a href="http://spark.apache.org/docs/2.0.1/api/python/pyspark.streaming.html#pyspark.streaming.kafka.KafkaUtils" target="_blank" rel="external">KafkaUtils</a></li>
-</ul>
-</li>
-<li>相关demo<ul>
-<li><a href="https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/streaming" target="_blank" rel="external">Scala</a> </li>
-<li><a href="https://github.com/apache/spark/tree/master/examples/src/main/python/streaming" target="_blank" rel="external">Python</a></li>
-</ul>
-</li>
-<li>Spark Streaming 相关论文和视频<ul>
-<li><a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf" target="_blank" rel="external">论文</a></li>
-<li><a href="https://www.youtube.com/watch?v=g171ndOHgJ0&amp;feature=youtu.be" target="_blank" rel="external">视频</a> </li>
-</ul>
-</li>
-</ul>
-<hr>
+<h2 id="Fault-tolerance-Semantics"><a href="#Fault-tolerance-Semantics" class="headerlink" title="Fault-tolerance Semantics"></a>Fault-tolerance Semantics</h2><p>  To be edited </p>
+<h2 id="进一步参考"><a href="#进一步参考" class="headerlink" title="进一步参考"></a>进一步参考</h2><p>1、<a href="http://spark.apache.org/docs/2.0.1/streaming-kafka-integration.html" target="_blank" rel="external">Kafka集成指南</a><br>2、Spark Streaming Scala 相关文档</p>
+<pre><code>- [StreamingContext 与 DStream]()
+- [KafkaUtils, FlumeUtils, KinesisUtils]()
+</code></pre><p>3、Spark Streaming Python API文档</p>
+<pre><code>- [StreamingContext](http://spark.apache.org/docs/2.0.1/api/python/pyspark.streaming.html#pyspark.streaming.StreamingContext) 
+- [DStream](http://spark.apache.org/docs/2.0.1/api/python/pyspark.streaming.html#pyspark.streaming.DStream)
+- [KafkaUtils](http://spark.apache.org/docs/2.0.1/api/python/pyspark.streaming.html#pyspark.streaming.kafka.KafkaUtils)
+</code></pre><p>4、相关demo</p>
+<pre><code>+ [Scala](https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/streaming) 
++ [Python](https://github.com/apache/spark/tree/master/examples/src/main/python/streaming)
+</code></pre><p>5、Spark Streaming 相关论文和视频</p>
+<pre><code>- [论文](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+- [视频](https://www.youtube.com/watch?v=g171ndOHgJ0&amp;feature=youtu.be) 
+</code></pre><hr>
 <p><img src="https://licensebuttons.net/l/by/2.5/cn/88x31.png" alt="">本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://shidata.com" target="_blank" rel="external">识数大数据</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://wenlonggit.github.io/2017/09/20/sparkstreaming-tutorial/">http://wenlonggit.github.io/2017/09/20/sparkstreaming-tutorial/</a></p>
 
         </div>
@@ -708,7 +693,7 @@ var _hmt = _hmt || [];
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/大数据工程/">大数据工程</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/大数据/">大数据</a></p>
                             <p class="item-title"><a href="/2017/09/20/sparkstreaming-tutorial/" class="title">Spark Streaming 编程指南&amp;快速入门</a></p>
                             <p class="item-date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
                         </div>
@@ -728,7 +713,7 @@ var _hmt = _hmt || [];
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/大数据工程/">大数据工程</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/大数据/">大数据</a></p>
                             <p class="item-title"><a href="/2017/09/20/sparkshell-tutorial/" class="title">SparkShell快速上手</a></p>
                             <p class="item-date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
                         </div>
@@ -748,7 +733,7 @@ var _hmt = _hmt || [];
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/大数据工程/">大数据工程</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/大数据/">大数据</a></p>
                             <p class="item-title"><a href="/2017/09/20/spark-datadeal/" class="title">Spark数据读取与保存快速上手</a></p>
                             <p class="item-date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
                         </div>
@@ -768,7 +753,7 @@ var _hmt = _hmt || [];
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/大数据工程/">大数据工程</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/大数据/">大数据</a></p>
                             <p class="item-title"><a href="/2017/09/20/pyspark-tutorial/" class="title">Spark-Python脚本快速上手</a></p>
                             <p class="item-date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
                         </div>
@@ -803,7 +788,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据工程/">大数据工程</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发环境和工具/">开发环境和工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/">大数据</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发环境和工具/">开发环境和工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 

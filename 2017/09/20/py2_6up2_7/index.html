@@ -17,7 +17,7 @@
 <meta property="og:description" content="python2.6升级到2.7与pip的安装1、python2.6升级服务器上面装的centos5.8的镜像，默认安装的是python2.6.8，由于python官方已经停止了2.6版本的更新，很多第三方的python包也只支持2.7以上的python，例如sckit-learn，所以很有必要升级python
 1234567891011121314151617181920# 查看当前系统中的 Py">
 <meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/blog/tools/numpy.jpeg">
-<meta property="og:updated_time" content="2017-09-20T09:11:17.000Z">
+<meta property="og:updated_time" content="2017-09-21T08:08:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python2.6升级到2.7与pip的安装">
 <meta name="twitter:description" content="python2.6升级到2.7与pip的安装1、python2.6升级服务器上面装的centos5.8的镜像，默认安装的是python2.6.8，由于python官方已经停止了2.6版本的更新，很多第三方的python包也只支持2.7以上的python，例如sckit-learn，所以很有必要升级python
@@ -85,7 +85,7 @@ var _hmt = _hmt || [];
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/大数据工程/">大数据工程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/开发环境和工具/">开发环境和工具</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/大数据/">大数据</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/开发环境和工具/">开发环境和工具</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
                                     
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
@@ -177,13 +177,9 @@ var _hmt = _hmt || [];
             <h1 id="python2-6升级到2-7与pip的安装"><a href="#python2-6升级到2-7与pip的安装" class="headerlink" title="python2.6升级到2.7与pip的安装"></a>python2.6升级到2.7与pip的安装</h1><h2 id="1、python2-6升级"><a href="#1、python2-6升级" class="headerlink" title="1、python2.6升级"></a>1、python2.6升级</h2><p>服务器上面装的centos5.8的镜像，默认安装的是python2.6.8，由于python官方已经停止了2.6版本的更新，很多第三方的python包也只支持2.7以上的python，例如sckit-learn，所以很有必要升级python</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 查看当前系统中的 Python 版本，返回 Python 2.6.8 为正常</div><div class="line">python --version</div><div class="line">Python 2.6.8</div><div class="line"># 检查 CentOS 版本，返回 CentOS release 5.8 (Final) 为正常</div><div class="line">cat /etc/redhat-release</div><div class="line">CentOS release 5.8 (Final)</div><div class="line"># 安装所有的开发工具包</div><div class="line">yum groupinstall -y &quot;Development tools&quot;</div><div class="line"># 安装其它的必需包</div><div class="line">yum install -y zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel</div><div class="line"># 下载、编译和安装 Python 2.7.13</div><div class="line">#wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz</div><div class="line">tar zxf Python-2.7.13.tgz</div><div class="line">cd Python-2.7.13</div><div class="line">./configure</div><div class="line">make &amp;&amp; make install (这一步需要root权限)</div><div class="line"># 查看新的 Python 版本，返回 Python 2.7.13 为正常</div><div class="line">python --version</div><div class="line">Python 2.7.13</div></pre></td></tr></table></figure>
 <h2 id="2、pip的安装"><a href="#2、pip的安装" class="headerlink" title="2、pip的安装"></a>2、pip的安装</h2><p>pip的安装方式有几种：</p>
-<ul>
-<li><p>1、 使用脚本安装：<br>需要下载<a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="external">get-pip.py</a>,然后运行：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -H python get-pip.py</div></pre></td></tr></table></figure>
-</li>
-<li><p>2、使用软件管理器安装 </p>
-</li>
-</ul>
+<p>1、 使用脚本安装：</p>
+<p>需要下载<a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="external">get-pip.py</a>,然后运行：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -H python get-pip.py</div></pre></td></tr></table></figure></p>
+<p>2、使用软件管理器安装 </p>
 <p>在Linux系统中，pip通常可以在系统的软件管理器中安装，不过通过此方法安装的 一般不会是最新版本的pip.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Debian 和 Ubuntu:</div><div class="line"> sudo apt-get install python-pip</div><div class="line"></div><div class="line"># Fedora:</div><div class="line"> sudo yum install python-pip</div></pre></td></tr></table></figure>
 <p>一般推荐使用第一种方式安装，不过安装过后，可能是由于python的环境变量原因，直接pip，并不生效：</p>
@@ -452,7 +448,7 @@ var _hmt = _hmt || [];
     
         <a href="/2017/05/02/hadoop-snapshot/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">大数据工程——Hadoop/hive文件存储格式</p>
+        <p class="article-nav-title">Hadoop/hive文件存储格式</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -482,7 +478,7 @@ var _hmt = _hmt || [];
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/大数据工程/">大数据工程</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/大数据/">大数据</a></p>
                             <p class="item-title"><a href="/2017/09/20/sparkstreaming-tutorial/" class="title">Spark Streaming 编程指南&amp;快速入门</a></p>
                             <p class="item-date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
                         </div>
@@ -502,7 +498,7 @@ var _hmt = _hmt || [];
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/大数据工程/">大数据工程</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/大数据/">大数据</a></p>
                             <p class="item-title"><a href="/2017/09/20/sparkshell-tutorial/" class="title">SparkShell快速上手</a></p>
                             <p class="item-date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
                         </div>
@@ -522,7 +518,7 @@ var _hmt = _hmt || [];
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/大数据工程/">大数据工程</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/大数据/">大数据</a></p>
                             <p class="item-title"><a href="/2017/09/20/spark-datadeal/" class="title">Spark数据读取与保存快速上手</a></p>
                             <p class="item-date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
                         </div>
@@ -542,7 +538,7 @@ var _hmt = _hmt || [];
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/大数据工程/">大数据工程</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/大数据/">大数据</a></p>
                             <p class="item-title"><a href="/2017/09/20/pyspark-tutorial/" class="title">Spark-Python脚本快速上手</a></p>
                             <p class="item-date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
                         </div>
@@ -577,7 +573,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据工程/">大数据工程</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发环境和工具/">开发环境和工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/">大数据</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发环境和工具/">开发环境和工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
