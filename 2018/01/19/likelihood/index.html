@@ -3,18 +3,59 @@
 <head>
     <meta charset="utf-8">
     
-    <title>识数</title>
+    <title>数学基础——浅谈似然 | 识数</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="大数据 + 人工智能 = 业务增长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="识数">
-<meta property="og:url" content="http://wenlonggit.github.io/index.html">
+        <meta name="keywords" content="概率统计,MLE,极大似然估计,对数似然函数" />
+    
+    <meta name="description" content="本次学习预期收益：
+
+似然概念，与概率的区别
+极大似然求解过程和原理
+
+
+1、预备知识1.1 概率公理基于测度论的概率公理：概率是一种测度。
+
+第一公理：任一事件的概率都可以用0到 1区间上的一个实数来表示
+第二公理：归一原则：事件空间的概率值为1
+第三公理：概率加法原则：不相交子集的并的事件集合的概率为那些子集的概率的和
+
+1.2 概率密度函数PDF（Probability Density F">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数学基础——浅谈似然">
+<meta property="og:url" content="http://wenlonggit.github.io/2018/01/19/likelihood/index.html">
 <meta property="og:site_name" content="识数">
-<meta property="og:description" content="大数据 + 人工智能 = 业务增长">
+<meta property="og:description" content="本次学习预期收益：
+
+似然概念，与概率的区别
+极大似然求解过程和原理
+
+
+1、预备知识1.1 概率公理基于测度论的概率公理：概率是一种测度。
+
+第一公理：任一事件的概率都可以用0到 1区间上的一个实数来表示
+第二公理：归一原则：事件空间的概率值为1
+第三公理：概率加法原则：不相交子集的并的事件集合的概率为那些子集的概率的和
+
+1.2 概率密度函数PDF（Probability Density F">
+<meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/blog/math/likelihood_ln.png">
+<meta property="og:updated_time" content="2018-01-19T10:58:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="识数">
-<meta name="twitter:description" content="大数据 + 人工智能 = 业务增长">
+<meta name="twitter:title" content="数学基础——浅谈似然">
+<meta name="twitter:description" content="本次学习预期收益：
+
+似然概念，与概率的区别
+极大似然求解过程和原理
+
+
+1、预备知识1.1 概率公理基于测度论的概率公理：概率是一种测度。
+
+第一公理：任一事件的概率都可以用0到 1区间上的一个实数来表示
+第二公理：归一原则：事件空间的概率值为1
+第三公理：概率加法原则：不相交子集的并的事件集合的概率为那些子集的概率的和
+
+1.2 概率密度函数PDF（Probability Density F">
+<meta name="twitter:image" content="http://ol5qowkge.bkt.clouddn.com/blog/math/likelihood_ln.png">
     
 
     
@@ -137,566 +178,274 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="home">主页</em>
+    <a class="page-title-link" href="/categories/数学基础/">数学基础</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            
+                            <article id="post-likelihood" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        数学基础——浅谈似然
+        </h1>
+    
 
-    
-    
+            </header>
         
         
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
+            <div class="article-subtitle">
+                <a href="/2018/01/19/likelihood/" class="article-date">
+    <time datetime="2018-01-19T11:08:03.000Z" itemprop="datePublished">2018-01-19</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MLE/">MLE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对数似然函数/">对数似然函数</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/极大似然估计/">极大似然估计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/概率统计/">概率统计</a></li></ul>
+
             </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/2018/01/19/likelihood/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/math/likelihood_ln.png)" alt="数学基础——浅谈似然" class="thumbnail-image"></span>
-    
-    
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>本次学习预期收益：</p>
+<ul>
+<li>似然概念，与概率的区别</li>
+<li>极大似然求解过程和原理</li>
+</ul>
+</blockquote>
+<h2 id="1、预备知识"><a href="#1、预备知识" class="headerlink" title="1、预备知识"></a>1、预备知识</h2><h3 id="1-1-概率公理"><a href="#1-1-概率公理" class="headerlink" title="1.1 概率公理"></a>1.1 概率公理</h3><p>基于测度论的概率公理：概率是一种测度。</p>
+<ul>
+<li>第一公理：任一事件的概率都可以用0到 1区间上的一个实数来表示</li>
+<li>第二公理：归一原则：事件空间的概率值为1</li>
+<li>第三公理：概率加法原则：不相交子集的并的事件集合的概率为那些子集的概率的和</li>
+</ul>
+<h3 id="1-2-概率密度函数PDF（Probability-Density-Function）"><a href="#1-2-概率密度函数PDF（Probability-Density-Function）" class="headerlink" title="1.2 概率密度函数PDF（Probability Density Function）"></a>1.2 概率密度函数PDF（Probability Density Function）</h3><p><strong>定义：</strong> X是一个连续型随机变量——X的PDF就是一个描述这个随机变量的输出值，在某个确定的取值点附近的可能性的函数</p>
+<p><strong>性质：</strong> </p>
+<ul>
+<li>随机变量的取值落在某个区域之内的概率 == 概率密度函数在这个区域上的积分</li>
+<li>累积分布函数是概率密度函数的积分 </li>
+<li>连续型的随机变量取值在任意一点的概率都是0，概率P=0并不是不可能事件 </li>
+</ul>
+<h3 id="1-3-概率质量函数PMF（probability-mass-function）"><a href="#1-3-概率质量函数PMF（probability-mass-function）" class="headerlink" title="1.3 概率质量函数PMF（probability mass function）"></a>1.3 概率质量函数PMF（probability mass function）</h3><p><strong>定义：</strong> X是离散随机变量——X的PMF为X在各特定取值上的概率</p>
+<p><strong>PDF与PMF区别：</strong></p>
+<ul>
+<li>概率质量函数是对离散随机变量定义的，本身代表该值的概率；</li>
+<li>概率密度函数是对连续随机变量定义的，本身不是概率，只有对连续随机变量的概率密度函数在某区间内进行积分后才是概率</li>
+</ul>
+<h2 id="2、什么是似然（likelihood）"><a href="#2、什么是似然（likelihood）" class="headerlink" title="2、什么是似然（likelihood）"></a>2、什么是似然（likelihood）</h2><p>似然翻译自英文likelihood —— 可能性。<br>似：像；然：这样。似然——像这样。。。似然，感觉我穿越到了清末。。。咳咳，为了便于理解，还是忘记似然，跟我一起在心里默念三遍——似然==可能性！！！似然==可能性！！！似然==可能性！！！</p>
+<h3 id="2-1、似然与概率"><a href="#2-1、似然与概率" class="headerlink" title="2.1、似然与概率"></a>2.1、似然与概率</h3><p>在英语语境中，likelihood与probability是一样的意思，都表示机会。不仅在英语语境中，在汉语中，似然，或然，概率也都表示某事发生的可能性。只是在数学的概率统计科学中，似然和概率有明确的区分。</p>
+<p><strong>概率</strong>用于在已知一些参数的情况下，预测接下来的观测所得到的结果。<br><strong>似然</strong>则是用于在已知某些观测所得到的结果时，对有关事物的性质的参数进行估计。</p>
+<p>但要注意的是统计学中的概率要满足概率公里，似然不满足概率公理。</p>
+<h2 id="3、似然函数"><a href="#3、似然函数" class="headerlink" title="3、似然函数"></a>3、似然函数</h2><p><strong>似然函数</strong>是一种关于统计模型中的参数的函数，表示模型参数中的似然性。</p>
+<p>给出似然函数的定义公式时，要考虑随机变量的概率分布类型。</p>
+<p>如果是离线分布类型：给定输出x时，关于参数θ的似然函数L(θ|x)（在数值上）等于给定参数θ后变量X的概率：<br>                        L(θ|x)=P(X=x;θ)<br>需要注意的是，上式中的参数θ并不是随机变量。</p>
+<p>如果是连续型分布：假定一个关于参数θ、具有连续概率密度函数f的随机变量X，则在给定X的输出x时，参数θ的似然函数可表示为<br>                        L(θ|x)=f_θ(x)</p>
+<p>似然函数的重要性不是它的具体取值，而是当参数变化时函数到底变小还是变大。对同一个似然函数，如果存在一个参数值，使得它的函数值达到最大的话，那么这个值就是最为“合理”的参数值。</p>
+<p>在某种意义下，似然函数可以理解为条件概率的<strong>逆反</strong>。</p>
+<p>似然函数乘以一个正的常数之后仍然是似然函数，其取值并不需要满足归一化条件</p>
+<h3 id="3-1、对数似然函数"><a href="#3-1、对数似然函数" class="headerlink" title="3.1、对数似然函数"></a>3.1、对数似然函数</h3><p>涉及到似然函数的许多应用中，更方便的是使用似然函数的自然对数形式，即“对数似然函数”。求解一个函数的极大化往往需要求解该函数的关于未知参数的偏导数。因为自然对数log是一个连续且在似然函数的值域内严格递增的上凸函数。求对数通常能够一定程度上简化运算。所以对数似然函数常用在最大似然估计及相关领域中。例如：求解Gamma分布中参数的最大似然估计问题：</p>
+<p><img src="http://ol5qowkge.bkt.clouddn.com/blog/math/likelihood_ln.png" alt="likelihood_ln"></p>
+<h2 id="4、极大似然估计MLE（maximum-likelihood-estimation）"><a href="#4、极大似然估计MLE（maximum-likelihood-estimation）" class="headerlink" title="4、极大似然估计MLE（maximum likelihood estimation）"></a>4、极大似然估计MLE（maximum likelihood estimation）</h2><p><img src="http://ol5qowkge.bkt.clouddn.com/blog/math/max-likelihood.png" alt="max-likelihood"></p>
+<p>MLE是一种广泛应用的参数估计方法（<strong>模型已定，参数未知，需要估计</strong>）。该方法最初由德国数学家高斯提出，但这个方法通常被归功于英国统计学家罗纳德·菲舍尔。其定义如下：<br>给定一个概率分布D，已知其概率密度函数（连续分布）或概率质量函数（离散分布）为 f_D，以及一个分布参数 θ，我们可以从这个分布中抽出一个具有 n个值的采样 x 利用f_D计算出其似然函数：</p>
+<pre><code>lik(θ|x_1,... ,x_n)=f_θ(x_1,... ,x_n)
+</code></pre><h3 id="4-1-极大似然估计例子："><a href="#4-1-极大似然估计例子：" class="headerlink" title="4.1 极大似然估计例子："></a>4.1 极大似然估计例子：</h3><h4 id="4-1-1-离散分布，离线参数空间"><a href="#4-1-1-离散分布，离线参数空间" class="headerlink" title="4.1.1 离散分布，离线参数空间"></a>4.1.1 离散分布，离线参数空间</h4><p><img src="http://ol5qowkge.bkt.clouddn.com/blog/math/mle_eg1.png" alt="mle_eg1"></p>
+<h4 id="4-1-2-离散分布，连续参数空间"><a href="#4-1-2-离散分布，连续参数空间" class="headerlink" title="4.1.2 离散分布，连续参数空间"></a>4.1.2 离散分布，连续参数空间</h4><p><img src="http://ol5qowkge.bkt.clouddn.com/blog/math/mle_eg2.png" alt="mle_eg2"></p>
+<h4 id="4-1-3-连续分布，连续参数空间"><a href="#4-1-3-连续分布，连续参数空间" class="headerlink" title="4.1.3 连续分布，连续参数空间"></a>4.1.3 连续分布，连续参数空间</h4><p>见第3节中伽马分布的例子</p>
+<p>极大似然估计的一般求解步骤为：<br>（1）写出似然函数 （一般是概率密度或质量函数）<br>（2）取平均对数似然函数 （最大化一个似然函数同最大化它的自然对数是等价的）<br>（3）求解似然估计值 </p>
+<h2 id="5、似然比"><a href="#5、似然比" class="headerlink" title="5、似然比"></a>5、似然比</h2><h3 id="5-1、最大似然比检验"><a href="#5-1、最大似然比检验" class="headerlink" title="5.1、最大似然比检验"></a>5.1、最大似然比检验</h3><p>似然比检验是利用似然函数来检测某个假设（或限制）是否有效的一种检验。一般情况下，要检测某个附加的参数限制是否是正确的，可以将加入附加限制条件的较复杂模型的似然函数最大值与之前的较简单模型的似然函数最大值进行比较。如果参数限制是正确的，那么加入这样一个参数应当不会造成似然函数最大值的大幅变动。一般使用两者的比例来进行比较，这个比值是<a href="https://zh.wikipedia.org/wiki/%E5%8D%A1%E6%96%B9%E5%88%86%E9%85%8D" target="_blank" rel="external">卡方分配</a>。</p>
+<h2 id="5、参考资料"><a href="#5、参考资料" class="headerlink" title="5、参考资料"></a>5、参考资料</h2><ul>
+<li><a href="https://www.zhihu.com/question/54082000" target="_blank" rel="external">如何理解似然函数?</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0" target="_blank" rel="external">似然函数-维基百科</a></li>
+<li><p><a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1" target="_blank" rel="external">最大似然估计-维基百科</a></p>
+<p>​</p>
+</li>
+</ul>
+<hr>
+<p><img src="https://licensebuttons.net/l/by/2.5/cn/88x31.png" alt="">本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://shidata.com" target="_blank" rel="external">识数大数据</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://wenlonggit.github.io/2018/01/19/likelihood/">http://wenlonggit.github.io/2018/01/19/likelihood/</a></p>
 
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/数学基础/">数学基础</a>
-            </p>
-            <p class="date"><time datetime="2018-01-19T11:08:03.000Z" itemprop="datePublished">2018-01-19</time></p>
         </div>
         
+        <!-- 不蒜统计 -->
+        <span style="display: inline;" id="busuanzi_container_page_pv">本文已被访问 <span id="busuanzi_value_page_pv" font="微软雅黑" style="color:black"></span> 次，感谢您的来访！</span>
+        
+           <!-- hexo打赏 -->
     
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/01/19/likelihood/">数学基础——浅谈似然</a>
-        </h1>
+    
+        <!-- css -->
+        <style type="text/css">
+        .center {
+        text-align: center;
+        }
+        .hidden {
+        display: none;
+        }
+        .donate_bar a.btn_donate{
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+        _background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+        <!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+        因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+        为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+        嵌入其它博客时不一定要它们。 -->
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+        <!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+        }
+
+        .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+        .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+        }
+        .bold{ font-weight: bold; }
+        </style>
+        <!-- /css -->
+
+        <!-- Donate Module -->
+        <div id="donate_module">
+
+        <!-- btn_donate & tips -->
+        <div id="donate_board" class="donate_bar center">
+        <br>
+        ------------------------------------------------------------------------------------------------------------------------------
+        <br>
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">
+        Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+        </span>
+
+        </div>
+        <!-- /btn_donate & tips -->
+
+        <!-- donate guide -->
+
+        <div id="donate_guide" class="donate_bar center hidden">
+        <br>
+        ------------------------------------------------------------------------------------------------------------------------------
+        <br>
+
+        <a href="http://ol5qowkge.bkt.clouddn.com/pay/wechat.jpg" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+        <img src="http://ol5qowkge.bkt.clouddn.com/pay/wechat.jpg" title="微信打赏 Colin" height="190px" width="auto"/>
+        </a>
+
+        &nbsp;&nbsp;
+
+        <a href="http://ol5qowkge.bkt.clouddn.com/pay/paypal.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+        <img src="http://ol5qowkge.bkt.clouddn.com/pay/paypal.jpg" title="支付宝打赏 Colin" height="190px" width="auto"/>
+        </a>
+
+        <span class="donate_txt">
+        Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+        </span>
+
+        </div>
+        <!-- /donate guide -->
+
+        <!-- donate script -->
+        <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+        $('#donate_board').addClass('hidden');
+        $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web(){
+        $('#donate').submit();
+        }
+
+        var original_window_onload = window.onload;
+        window.onload = function () {
+        if (original_window_onload) {
+        original_window_onload();
+        }
+        document.getElementById('donate_board_wdg').className = 'hidden';
+        }
+        </script>
+        <!-- /donate script -->
+        </div>
+        <!-- /Donate Module -->
     
 
-        <p class="article-excerpt">
+
+        <footer class="article-footer">
             
-本次学习预期收益：
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
 
-似然概念，与概率的区别
-极大似然求解过程和原理
 
 
-1、预备知识1.1 概率公理基于测度论的概率公理：概率是一种测度。
 
-第一公理：任一事件的概率都可以用0到 1区间上的一个实数来表示
-第二公理：归一原则：事件空间的概率值为1
-第三公理：概率加法原则：不相交子集的并的事件集合的概率为那些子集的概率的和
 
-1.2 概率密度函数PDF（Probability Density F
-        </p>
+        </footer>
     </div>
 </article>
-    
 
-    
+    <section id="comments">
     
         
-            </div></section>
-        
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/09/20/py2_6up2_7/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/tools/numpy.jpeg)" alt="python2.6升级到2.7与pip的安装" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
+    <div id="uyan_frame"></div>
 
     
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a>
-            </p>
-            <p class="date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/09/20/py2_6up2_7/">python2.6升级到2.7与pip的安装</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            python2.6升级到2.7与pip的安装1、python2.6升级服务器上面装的centos5.8的镜像，默认安装的是python2.6.8，由于python官方已经停止了2.6版本的更新，很多第三方的python包也只支持2.7以上的python，例如sckit-learn，所以很有必要升级python
-1234567891011121314151617181920# 查看当前系统中的 Py
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/09/20/sparkstreaming-tutorial/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="Spark Streaming 编程指南&amp;快速入门" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/大数据/">大数据</a>
-            </p>
-            <p class="date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/09/20/sparkstreaming-tutorial/">Spark Streaming 编程指南&amp;快速入门</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            检查项
-
-[x] 依赖链接（Linking）
-[x] 初始化 StreamingContext
-[x] 离散流（DStreams）
-[x] DStreams 输入源与接收器（Receivers）
-[x] DStreams 转化（Transformations）
-[x] DStreams的输出操作
-[x] DataFrame和SQL操作
-[x] MLlib 操作
-[x] 缓存/持久化（Caching
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/09/20/sparkshell-tutorial/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="SparkShell快速上手" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/大数据/">大数据</a>
-            </p>
-            <p class="date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/09/20/sparkshell-tutorial/">SparkShell快速上手</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-SparkShell是Spark自带的交互式shell
-可用来作即时数据分析
-SparkShell可用来与分布式存储在许多机器的内存或硬盘上的数据进行交互。而处理过程分发由Spark自动完成
-
-
-SparkShell Python和Scala版本的实例
-SparkShell启动时，默认就已经自动初始化了一个SparkContext——sc
-Python 版本打开python版本的sparksh
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/09/20/spark-datadeal/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="Spark数据读取与保存快速上手" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/大数据/">大数据</a>
-            </p>
-            <p class="date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/09/20/spark-datadeal/">Spark数据读取与保存快速上手</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-Spark支持多种输入与输出：
-
-文件格式与文件系统
-多种文件系统：HDFS NFS AmazonS3 
-多种文件格式：本地文件 JSON Sequencefile Parquet CSV
-
-
-Spark SQL中的结构化数据源
-JSON ApacheHive 
-
-
-数据库与键值存储
-JDBC HBase Elasticsearch Cassandra 
+    </section>
 
 
 
 
-1、文件格式Spark会针对文件
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/09/20/pyspark-tutorial/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="Spark-Python脚本快速上手" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/大数据/">大数据</a>
-            </p>
-            <p class="date"><time datetime="2017-09-20T09:00:21.000Z" itemprop="datePublished">2017-09-20</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/09/20/pyspark-tutorial/">Spark-Python脚本快速上手</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            使用python连接spark开发非交互式的独立程序需要自行初始化SparkContext 
-运行python脚本需要使用spark自带的bin/spark-submit脚本运行。spark-submit会帮助引入python程序的spark依赖，并且已经配置好了调用spark的PythonAPI的环境。
-运行python脚本
-1bin/spark-submit my_script.py
-
-初始化
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/02/hadoop-snapshot/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/hadoop/row.png)" alt="Hadoop/hive文件存储格式" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/大数据/">大数据</a>
-            </p>
-            <p class="date"><time datetime="2017-05-02T11:08:03.000Z" itemprop="datePublished">2017-05-02</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/02/hadoop-snapshot/">Hadoop/hive文件存储格式</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1、基于行存储
-基于Hadoop系统行存储结构的优点在于快速数据加载和动态负载的高适应能力，这是因为行存储保证了相同记录的所有域都在同一个集群节点，即同一个 HDFS块。不过，行存储的缺点也是显而易见的，例如它不能支持快速查询处理，因为当查询仅仅针对多列表中的少数几列时，它不能跳过不必要的列读取；此 外，由于混合着不同数据值的列，行存储不易获得一个极高的压缩比，即空间利用率不易大幅提高。
-
-HDF
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/02/ml-topicmodule/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/ml/topicmodel.jpeg)" alt="机器学习——TopicModel介绍" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/机器学习/">机器学习</a>
-            </p>
-            <p class="date"><time datetime="2017-05-02T11:08:03.000Z" itemprop="datePublished">2017-05-02</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/02/ml-topicmodule/">机器学习——TopicModel介绍</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            一、什么是Topic Module在机器学习以及自然语言处理中, topic model是一种能够在一系列文档集中发现抽象的”主题”的统计学模型。主题模型通常被用作在文本中发现隐含的语义结构的文本挖掘(text-mining)工具。
-举个直接的例子,对于一个有特定主题的文档,我们通常可以在文档中找到或多或少频繁出现的特定域的单词,比如”狗”和”骨头”通常出现在和狗相关的文档中,而”猫”和”喵喵”通
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/03/13/hexo-install-3/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg)" alt="个人博客部署——域名绑定与插件安装" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a>
-            </p>
-            <p class="date"><time datetime="2017-03-13T13:00:21.000Z" itemprop="datePublished">2017-03-13</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/13/hexo-install-3/">个人博客部署——域名绑定与插件安装</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-前面两篇个人博客部署系列博文已经完成了博客的整体搭建工作，下面是一些细节工作，有了这些，让你的博客如虎添翼。
-
-
-加载第三方评论框
-加载第三方分享按钮
-使用第三方网站统计
-添加帖子访问次数统计
-使用七牛云图床
-自定义关于页面
-自定义404页面
-添加打赏
-绑定域名
-网站地图
-RSS
-网站图标
-SEM优化
-
-加载第三方评论框hexo默认集成的是Disqus，国内的话可以使用多说。多说集成非常简单，仅
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/02/12/hexo-install-2/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/wenlonggit/image/github.pages.jpg)" alt="个人博客部署——部署Hexo到Github Pages" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/开发环境和工具/">开发环境和工具</a>
-            </p>
-            <p class="date"><time datetime="2017-02-12T13:00:21.000Z" itemprop="datePublished">2017-02-12</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/02/12/hexo-install-2/">个人博客部署——部署Hexo到Github Pages</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            一、部署 github pagesgithub pages 是github出品的一个免费的静态网页托管服务. 可以用来托管个人博客、组织或部门网站、项目介绍网站等。用github pages托管个人博客不像wordpress，需要配置服务器或VPS。github pages不需要配置服务器，不需要数据库，你只需要把你通过hexo生成的静态博客的html文件，通过git命令push到github即可
-        </p>
-    </div>
-</article>
-    
-
-
-    </div></section>
-
-
-    <nav id="page-nav">
-        <span class="pages">第 1 页，共 2 页</span>
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
-    </nav>
 
 
                         </div>
@@ -757,6 +506,19 @@ SEM优化
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/09/20/py2_6up2_7/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">python2.6升级到2.7与pip的安装</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
