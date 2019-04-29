@@ -38,8 +38,8 @@
 第三公理：概率加法原则：不相交子集的并的事件集合的概率为那些子集的概率的和
 
 1.2 概率密度函数PDF（Probability Density F">
-<meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/blog/math/likelihood_ln.png">
-<meta property="og:updated_time" content="2018-01-20T03:15:10.000Z">
+<meta property="og:image" content="http://image.shidata.com/blog/math/likelihood_ln.png">
+<meta property="og:updated_time" content="2019-04-29T07:28:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数学基础——浅谈似然">
 <meta name="twitter:description" content="本次学习预期收益：
@@ -55,7 +55,7 @@
 第三公理：概率加法原则：不相交子集的并的事件集合的概率为那些子集的概率的和
 
 1.2 概率密度函数PDF（Probability Density F">
-<meta name="twitter:image" content="http://ol5qowkge.bkt.clouddn.com/blog/math/likelihood_ln.png">
+<meta name="twitter:image" content="http://image.shidata.com/blog/math/likelihood_ln.png">
     
 
     
@@ -245,13 +245,13 @@ var _hmt = _hmt || [];
 <p>在某种意义下，似然函数可以理解为条件概率的<strong>逆反</strong>。</p>
 <p>似然函数乘以一个正的常数之后仍然是似然函数，其取值并不需要满足归一化条件</p>
 <h3 id="3-1、对数似然函数"><a href="#3-1、对数似然函数" class="headerlink" title="3.1、对数似然函数"></a>3.1、对数似然函数</h3><p>涉及到似然函数的许多应用中，更方便的是使用似然函数的自然对数形式，即“对数似然函数”。求解一个函数的极大化往往需要求解该函数的关于未知参数的偏导数。因为自然对数log是一个连续且在似然函数的值域内严格递增的上凸函数。求对数通常能够一定程度上简化运算。所以对数似然函数常用在最大似然估计及相关领域中。例如：求解Gamma分布中参数的最大似然估计问题：</p>
-<p><img src="http://ol5qowkge.bkt.clouddn.com/blog/math/likelihood_ln.png" alt="likelihood_ln"></p>
-<h2 id="4、极大似然估计MLE（maximum-likelihood-estimation）"><a href="#4、极大似然估计MLE（maximum-likelihood-estimation）" class="headerlink" title="4、极大似然估计MLE（maximum likelihood estimation）"></a>4、极大似然估计MLE（maximum likelihood estimation）</h2><p><img src="http://ol5qowkge.bkt.clouddn.com/blog/math/max-likelihood.png" alt="max-likelihood"></p>
+<p><img src="http://image.shidata.com/blog/math/likelihood_ln.png" alt="likelihood_ln"></p>
+<h2 id="4、极大似然估计MLE（maximum-likelihood-estimation）"><a href="#4、极大似然估计MLE（maximum-likelihood-estimation）" class="headerlink" title="4、极大似然估计MLE（maximum likelihood estimation）"></a>4、极大似然估计MLE（maximum likelihood estimation）</h2><p><img src="http://image.shidata.com/blog/math/max-likelihood.png" alt="max-likelihood"></p>
 <p>MLE是一种广泛应用的参数估计方法（<strong>模型已定，参数未知，需要估计</strong>）。该方法最初由德国数学家高斯提出，但这个方法通常被归功于英国统计学家罗纳德·菲舍尔。其定义如下：<br>给定一个概率分布D，已知其概率密度函数（连续分布）或概率质量函数（离散分布）为 f_D，以及一个分布参数 θ，我们可以从这个分布中抽出一个具有 n个值的采样 x 利用f_D计算出其似然函数：</p>
 <pre><code>lik(θ|x_1,... ,x_n)=f_θ(x_1,... ,x_n)
 </code></pre><p>若 D是离散分布,f_θ 即是在参数为 θ 时观测到这一采样的概率。若 D是连续分布， θ则为 X_1, X_2,…, X_n联合分布的概率密度函数在观测值处的取值。一旦我们获得 X_1, X_2,…, X_n，我们就能求得一个关于θ 的估计。最大似然估计会寻找关于 θ 的最可能的值（即，在所有可能的θ 取值中，寻找一个值使这个采样的“可能性”最大化）。从数学上来说，我们可以在θ的所有可能取值中寻找一个值使得似然函数取到最大值。这个使可能性最大的θ值即称为θ的最大似然估计。由定义，最大似然估计是样本的函数。</p>
-<h3 id="4-1-极大似然估计例子："><a href="#4-1-极大似然估计例子：" class="headerlink" title="4.1 极大似然估计例子："></a>4.1 极大似然估计例子：</h3><h4 id="4-1-1-离散分布，离线参数空间"><a href="#4-1-1-离散分布，离线参数空间" class="headerlink" title="4.1.1 离散分布，离线参数空间"></a>4.1.1 离散分布，离线参数空间</h4><p><img src="http://ol5qowkge.bkt.clouddn.com/blog/math/mle_eg1.png" alt="mle_eg1"></p>
-<h4 id="4-1-2-离散分布，连续参数空间"><a href="#4-1-2-离散分布，连续参数空间" class="headerlink" title="4.1.2 离散分布，连续参数空间"></a>4.1.2 离散分布，连续参数空间</h4><p><img src="http://ol5qowkge.bkt.clouddn.com/blog/math/mle_eg2.png" alt="mle_eg2"></p>
+<h3 id="4-1-极大似然估计例子："><a href="#4-1-极大似然估计例子：" class="headerlink" title="4.1 极大似然估计例子："></a>4.1 极大似然估计例子：</h3><h4 id="4-1-1-离散分布，离线参数空间"><a href="#4-1-1-离散分布，离线参数空间" class="headerlink" title="4.1.1 离散分布，离线参数空间"></a>4.1.1 离散分布，离线参数空间</h4><p><img src="http://image.shidata.com/blog/math/mle_eg1.png" alt="mle_eg1"></p>
+<h4 id="4-1-2-离散分布，连续参数空间"><a href="#4-1-2-离散分布，连续参数空间" class="headerlink" title="4.1.2 离散分布，连续参数空间"></a>4.1.2 离散分布，连续参数空间</h4><p><img src="http://image.shidata.com/blog/math/mle_eg2.png" alt="mle_eg2"></p>
 <h4 id="4-1-3-连续分布，连续参数空间"><a href="#4-1-3-连续分布，连续参数空间" class="headerlink" title="4.1.3 连续分布，连续参数空间"></a>4.1.3 连续分布，连续参数空间</h4><p>见第3节中伽马分布的例子</p>
 <p>极大似然估计的一般求解步骤为：<br>（1）写出似然函数 （一般是概率密度或质量函数）<br>（2）取平均对数似然函数 （最大化一个似然函数同最大化它的自然对数是等价的）<br>（3）求解似然估计值 </p>
 <h2 id="5、似然比"><a href="#5、似然比" class="headerlink" title="5、似然比"></a>5、似然比</h2><h3 id="5-1、最大似然比检验"><a href="#5-1、最大似然比检验" class="headerlink" title="5.1、最大似然比检验"></a>5.1、最大似然比检验</h3><p>似然比检验是利用似然函数来检测某个假设（或限制）是否有效的一种检验。一般情况下，要检测某个附加的参数限制是否是正确的，可以将加入附加限制条件的较复杂模型的似然函数最大值与之前的较简单模型的似然函数最大值进行比较。如果参数限制是正确的，那么加入这样一个参数应当不会造成似然函数最大值的大幅变动。一般使用两者的比例来进行比较，这个比值是<a href="https://zh.wikipedia.org/wiki/%E5%8D%A1%E6%96%B9%E5%88%86%E9%85%8D" target="_blank" rel="external">卡方分配</a>。</p>
@@ -534,7 +534,7 @@ var _hmt = _hmt || [];
                             <a href="/2018/01/19/likelihood/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/math/likelihood_ln.png)" alt="数学基础——浅谈似然" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/math/likelihood_ln.png)" alt="数学基础——浅谈似然" class="thumbnail-image"></span>
     
     
 </a>
@@ -554,7 +554,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/py2_6up2_7/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/tools/numpy.jpeg)" alt="python2.6升级到2.7与pip的安装" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/tools/numpy.jpeg)" alt="python2.6升级到2.7与pip的安装" class="thumbnail-image"></span>
     
     
 </a>
@@ -574,7 +574,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/sparkstreaming-tutorial/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="Spark Streaming 编程指南&amp;快速入门" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/spark/pyspark.png)" alt="Spark Streaming 编程指南&amp;快速入门" class="thumbnail-image"></span>
     
     
 </a>
@@ -594,7 +594,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/sparkshell-tutorial/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="SparkShell快速上手" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/spark/pyspark.png)" alt="SparkShell快速上手" class="thumbnail-image"></span>
     
     
 </a>
@@ -614,7 +614,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/spark-datadeal/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="Spark数据读取与保存快速上手" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/spark/pyspark.png)" alt="Spark数据读取与保存快速上手" class="thumbnail-image"></span>
     
     
 </a>
@@ -703,7 +703,7 @@ var _hmt = _hmt || [];
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2018 Alex Zhang</p>
+                <p>&copy; 2019 Alex Zhang</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
                 <!-- 不蒜统计 -->
                 <span style="display: inline;" id="busuanzi_container_site_uv">本站总访客数 <span id="busuanzi_value_site_uv" font="微软雅黑" style="color:white"></span> 位</span>

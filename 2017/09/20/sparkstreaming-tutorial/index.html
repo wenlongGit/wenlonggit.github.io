@@ -34,8 +34,8 @@
 [x] DataFrame和SQL操作
 [x] MLlib 操作
 [x] 缓存/持久化（Caching">
-<meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png">
-<meta property="og:updated_time" content="2017-09-21T08:59:23.000Z">
+<meta property="og:image" content="http://image.shidata.com/blog/spark/pyspark.png">
+<meta property="og:updated_time" content="2019-04-29T07:29:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark Streaming 编程指南&快速入门">
 <meta name="twitter:description" content="检查项
@@ -49,7 +49,7 @@
 [x] DataFrame和SQL操作
 [x] MLlib 操作
 [x] 缓存/持久化（Caching">
-<meta name="twitter:image" content="http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png">
+<meta name="twitter:image" content="http://image.shidata.com/blog/spark/pyspark.png">
     
 
     
@@ -272,9 +272,9 @@ var _hmt = _hmt || [];
 <li>一个SparkContext可以重复使用来创建多个StreamingContexts。前提是在一个新的StreamingContext创建之前的StreamingContext必须已经stopped（SparkContext不能停）</li>
 </ul>
 <h3 id="离散流（DStreams）"><a href="#离散流（DStreams）" class="headerlink" title="离散流（DStreams）"></a>离散流（DStreams）</h3><p>​   <strong>Discretized Stream</strong>是Streaming的一个基本的抽象概念。它表示连续一个连续的数据流，可以是从数据源接收的输入数据流，也可以是从输入流中通过转换操作产生的处理数据流。在Spark内，DStreams代表一系列连续的RDDS（RDD是Spark对不变的，分布式数据集的抽象），DStream中的每个RDD都包含了一个确定批处理间隔的数据。具体见下图：</p>
-<p><img src="http://ol5qowkge.bkt.clouddn.com/study/dstreams.png" alt="alt"></p>
+<p><img src="http://image.shidata.com/study/dstreams.png" alt="alt"></p>
 <p>​   对DStream应用的任何操作都转换为基础RDD上的操作。例如，在将行转换为字的数据流的demo中，对行DStream中的每个RDD应用flatMap操作以生成字DStream的RDD。如下图所示: </p>
-<p><img src="http://ol5qowkge.bkt.clouddn.com/study/dstreams_rdds.png" alt="alt"></p>
+<p><img src="http://image.shidata.com/study/dstreams_rdds.png" alt="alt"></p>
 <h3 id="DStreams-输入源与接收器（Receivers）"><a href="#DStreams-输入源与接收器（Receivers）" class="headerlink" title="DStreams 输入源与接收器（Receivers）"></a>DStreams 输入源与接收器（Receivers）</h3><p>​   Input DStreams 是指从数据流源接收的输入数据流。每个输入DStream（文件流除外）与Receiver 对象相关联，该对象从数据源接收数据并将其存储在Spark的内存中进行处理。</p>
 <p>​   SparkStreaming提供了两种内置的数据流源：</p>
 <ul>
@@ -694,7 +694,7 @@ var _hmt = _hmt || [];
                             <a href="/2018/01/19/likelihood/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/math/likelihood_ln.png)" alt="数学基础——浅谈似然" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/math/likelihood_ln.png)" alt="数学基础——浅谈似然" class="thumbnail-image"></span>
     
     
 </a>
@@ -714,7 +714,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/py2_6up2_7/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/tools/numpy.jpeg)" alt="python2.6升级到2.7与pip的安装" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/tools/numpy.jpeg)" alt="python2.6升级到2.7与pip的安装" class="thumbnail-image"></span>
     
     
 </a>
@@ -734,7 +734,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/sparkstreaming-tutorial/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="Spark Streaming 编程指南&amp;快速入门" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/spark/pyspark.png)" alt="Spark Streaming 编程指南&amp;快速入门" class="thumbnail-image"></span>
     
     
 </a>
@@ -754,7 +754,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/sparkshell-tutorial/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="SparkShell快速上手" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/spark/pyspark.png)" alt="SparkShell快速上手" class="thumbnail-image"></span>
     
     
 </a>
@@ -774,7 +774,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/spark-datadeal/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="Spark数据读取与保存快速上手" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/spark/pyspark.png)" alt="Spark数据读取与保存快速上手" class="thumbnail-image"></span>
     
     
 </a>
@@ -863,7 +863,7 @@ var _hmt = _hmt || [];
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2018 Alex Zhang</p>
+                <p>&copy; 2019 Alex Zhang</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
                 <!-- 不蒜统计 -->
                 <span style="display: inline;" id="busuanzi_container_site_uv">本站总访客数 <span id="busuanzi_value_site_uv" font="微软雅黑" style="color:white"></span> 位</span>

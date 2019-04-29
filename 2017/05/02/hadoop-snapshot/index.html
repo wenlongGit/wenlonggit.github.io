@@ -20,15 +20,15 @@ HDF">
 基于Hadoop系统行存储结构的优点在于快速数据加载和动态负载的高适应能力，这是因为行存储保证了相同记录的所有域都在同一个集群节点，即同一个 HDFS块。不过，行存储的缺点也是显而易见的，例如它不能支持快速查询处理，因为当查询仅仅针对多列表中的少数几列时，它不能跳过不必要的列读取；此 外，由于混合着不同数据值的列，行存储不易获得一个极高的压缩比，即空间利用率不易大幅提高。
 
 HDF">
-<meta property="og:image" content="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/row.png">
-<meta property="og:updated_time" content="2017-09-21T09:05:20.000Z">
+<meta property="og:image" content="http://image.shidata.com/blog/hadoop/row.png">
+<meta property="og:updated_time" content="2019-04-29T07:27:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop/hive文件存储格式">
 <meta name="twitter:description" content="1、基于行存储
 基于Hadoop系统行存储结构的优点在于快速数据加载和动态负载的高适应能力，这是因为行存储保证了相同记录的所有域都在同一个集群节点，即同一个 HDFS块。不过，行存储的缺点也是显而易见的，例如它不能支持快速查询处理，因为当查询仅仅针对多列表中的少数几列时，它不能跳过不必要的列读取；此 外，由于混合着不同数据值的列，行存储不易获得一个极高的压缩比，即空间利用率不易大幅提高。
 
 HDF">
-<meta name="twitter:image" content="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/row.png">
+<meta name="twitter:image" content="http://image.shidata.com/blog/hadoop/row.png">
     
 
     
@@ -183,7 +183,7 @@ var _hmt = _hmt || [];
             <h3 id="1、基于行存储"><a href="#1、基于行存储" class="headerlink" title="1、基于行存储"></a>1、基于行存储</h3><blockquote>
 <p>基于Hadoop系统行存储结构的优点在于快速数据加载和动态负载的高适应能力，这是因为行存储保证了相同记录的所有域都在同一个集群节点，即同一个 HDFS块。不过，行存储的缺点也是显而易见的，例如它不能支持快速查询处理，因为当查询仅仅针对多列表中的少数几列时，它不能跳过不必要的列读取；此 外，由于混合着不同数据值的列，行存储不易获得一个极高的压缩比，即空间利用率不易大幅提高。</p>
 </blockquote>
-<p>HDFS块内行存储的例子：<br><img src="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/row.png" alt=""></p>
+<p>HDFS块内行存储的例子：<br><img src="http://image.shidata.com/blog/hadoop/row.png" alt=""></p>
 <h4 id="Textfile"><a href="#Textfile" class="headerlink" title="Textfile"></a>Textfile</h4><blockquote>
 <p>默认格式，数据不做压缩，磁盘开销大，数据解析开销大。<br>文本格式除了会占用更多磁盘资源外，对它的解析开销一般会比二进制格式高，因此强烈不建议在生产系统中使用这些格式进行储存。<br>如果需要输出这些格式，请在客户端做相应的转换操作。<br>文本格式经常会用于日志收集，数据库导入，Hive默认配置也是使用文本格式，而且常常容易忘了压缩，所以请确保使用了正确的格式。 </p>
 </blockquote>
@@ -199,7 +199,7 @@ var _hmt = _hmt || [];
 <h3 id="2、基于列存储"><a href="#2、基于列存储" class="headerlink" title="2、基于列存储"></a>2、基于列存储</h3><blockquote>
 <p>查询时列存储能够避免读不必要的列， 并且压缩一个列中的相似数据能够达到较高的压缩比。然而，由于元组重构的较高开销，它并不能提供基于Hadoop系统的快速查询处理。列存储不能保证同一 记录的所有域都存储在同一集群节点，行存储的例子中，记录的4个域存储在位于不同节点的3个HDFS块中。因此，记录的重构将导致通过集群节点网络的大 量数据传输。尽管预先分组后，多个列在一起能够减少开销，但是对于高度动态的负载模式，它并不具备很好的适应性。</p>
 </blockquote>
-<p>HDFS块内列存储的例子：<br><img src="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/column.jpg" alt=""></p>
+<p>HDFS块内列存储的例子：<br><img src="http://image.shidata.com/blog/hadoop/column.jpg" alt=""></p>
 <h3 id="3、基于行列存储"><a href="#3、基于行列存储" class="headerlink" title="3、基于行列存储"></a>3、基于行列存储</h3><h4 id="RCFile"><a href="#RCFile" class="headerlink" title="RCFile"></a>RCFile</h4><blockquote>
 <p>RCFile是Hive推出的一种专门面向列的数据格式。 它遵循“先按列划分，再垂直划分”的设计理念。当查询过程中，针对它并不关心的列时，它会在IO上跳过这些列。需要说明的是，RCFile在map阶段从远端拷贝仍然是拷贝整个数据块，并且拷贝到本地目录后RCFile并不是真正直接跳过不需要的列，并跳到需要读取的列， 而是通过扫描每一个row group的头部定义来实现的，但是在整个HDFS Block 级别的头部并没有定义每个列从哪个row group起始到哪个row group结束。所以在读取所有列的情况下，RCFile的性能反而没有SequenceFile高。</p>
 </blockquote>
@@ -210,7 +210,7 @@ var _hmt = _hmt || [];
 </ol>
 </li>
 </ul>
-<p>HDFS块内RCFile方式存储的例子：<br><img src="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/rcfile.png" alt=""></p>
+<p>HDFS块内RCFile方式存储的例子：<br><img src="http://image.shidata.com/blog/hadoop/rcfile.png" alt=""></p>
 <p>RCFILE是一种行列存储相结合的存储方式。首先，其将数据按行分块，保证同一个record在一个块上，避免读一个记录需要读取多个block。其次，块数据列式存储，有利于数据压缩和快速的列存取。RCFILE文件示例：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> da.test_rcfile(</div><div class="line">   ...</div><div class="line">)</div><div class="line"><span class="keyword">COMMENT</span> <span class="string">'test_rcfile'</span></div><div class="line">PARTITIONED <span class="keyword">BY</span>(dt <span class="keyword">STRING</span>)</div><div class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span></div><div class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">'\001'</span></div><div class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> RCFILE </div><div class="line">;</div></pre></td></tr></table></figure>
 <h3 id="6、ParquetFile"><a href="#6、ParquetFile" class="headerlink" title="6、ParquetFile"></a>6、ParquetFile</h3><blockquote>
@@ -218,13 +218,13 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>ParquetFile 的详细介绍参考 <a href="http://www.infoq.com/cn/articles/in-depth-analysis-of-parquet-column-storage-format" target="_blank" rel="external">深入分析Parquet列式存储格式</a></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> da.test_parquet(</div><div class="line"> ...</div><div class="line">)</div><div class="line"><span class="keyword">COMMENT</span> <span class="string">'test_parquet'</span></div><div class="line">PARTITIONED <span class="keyword">BY</span>(dt <span class="keyword">STRING</span>)</div><div class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span></div><div class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">'\001'</span></div><div class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> PARQUET </div><div class="line">;</div></pre></td></tr></table></figure>
-<p><img src="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/parquet.jpg" alt=""></p>
+<p><img src="http://image.shidata.com/blog/hadoop/parquet.jpg" alt=""></p>
 <h3 id="7、ORCFile"><a href="#7、ORCFile" class="headerlink" title="7、ORCFile"></a>7、ORCFile</h3><blockquote>
 <p>ORC（OptimizedRC File）存储源自于RC（RecordColumnar File）这种存储格式，RC是一种列式存储引擎，对schema演化（修改schema需要重新生成数据）支持较差，而ORC是对RC改进，但它仍对schema演化支持较差，主要是在压缩编码，查询性能方面做了优化。<br>RC/ORC最初是在Hive中得到使用，最后发展势头不错，独立成一个单独的项目。Hive 1.x版本对事务和update操作的支持，便是基于ORC实现的（其他存储格式暂不支持）。ORC发展到今天，已经具备一些非常高级的feature，比如支持update操作，支持ACID，支持struct，array复杂类型。你可以使用复杂类型构建一个类似于parquet的嵌套式数据架构，但当层数非常多时，写起来非常麻烦和复杂，而parquet提供的schema表达方式更容易表示出多级嵌套的数据类型。</p>
 </blockquote>
 <p>ORCFile的详细介绍参考 <a href="http://www.slideshare.net/Hadoop_Summit/orc-2015-faster-better-smaller-49481231" target="_blank" rel="external">ORC 2015: Faster, Better, Smaller</a></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> da.test_orcfile(</div><div class="line"> ...</div><div class="line">)</div><div class="line"><span class="keyword">COMMENT</span> <span class="string">'test_orcfile'</span></div><div class="line">PARTITIONED <span class="keyword">BY</span>(dt <span class="keyword">STRING</span>)</div><div class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span></div><div class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">'\001'</span></div><div class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> ORCFILE </div><div class="line">;</div></pre></td></tr></table></figure>
-<p><img src="http://ol5qowkge.bkt.clouddn.com/blog/hadoop/orcfile.jpg" alt=""></p>
+<p><img src="http://image.shidata.com/blog/hadoop/orcfile.jpg" alt=""></p>
 <p><strong>Parquet与ORC对比</strong></p>
 <table>
 <thead>
@@ -670,7 +670,7 @@ var _hmt = _hmt || [];
                             <a href="/2018/01/19/likelihood/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/math/likelihood_ln.png)" alt="数学基础——浅谈似然" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/math/likelihood_ln.png)" alt="数学基础——浅谈似然" class="thumbnail-image"></span>
     
     
 </a>
@@ -690,7 +690,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/py2_6up2_7/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/tools/numpy.jpeg)" alt="python2.6升级到2.7与pip的安装" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/tools/numpy.jpeg)" alt="python2.6升级到2.7与pip的安装" class="thumbnail-image"></span>
     
     
 </a>
@@ -710,7 +710,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/sparkstreaming-tutorial/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="Spark Streaming 编程指南&amp;快速入门" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/spark/pyspark.png)" alt="Spark Streaming 编程指南&amp;快速入门" class="thumbnail-image"></span>
     
     
 </a>
@@ -730,7 +730,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/sparkshell-tutorial/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="SparkShell快速上手" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/spark/pyspark.png)" alt="SparkShell快速上手" class="thumbnail-image"></span>
     
     
 </a>
@@ -750,7 +750,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/09/20/spark-datadeal/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ol5qowkge.bkt.clouddn.com/blog/spark/pyspark.png)" alt="Spark数据读取与保存快速上手" class="thumbnail-image"></span>
+        <span style="background-image:url(http://image.shidata.com/blog/spark/pyspark.png)" alt="Spark数据读取与保存快速上手" class="thumbnail-image"></span>
     
     
 </a>
@@ -839,7 +839,7 @@ var _hmt = _hmt || [];
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2018 Alex Zhang</p>
+                <p>&copy; 2019 Alex Zhang</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
                 <!-- 不蒜统计 -->
                 <span style="display: inline;" id="busuanzi_container_site_uv">本站总访客数 <span id="busuanzi_value_site_uv" font="微软雅黑" style="color:white"></span> 位</span>
